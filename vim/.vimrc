@@ -17,7 +17,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-fugitive'
 Plugin 'benmills/vimux'
-
+Plugin 'terryma/vim-multiple-cursors'
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -26,7 +26,7 @@ call vundle#end()
 filetype plugin indent on
 
 set term=screen-256color
-map <C-n> :NERDTreeToggle<CR>
+nmap <C-m> :NERDTreeToggle<CR>
 
 set spell spelllang=en_gb
 set nospell
