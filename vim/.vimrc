@@ -106,7 +106,7 @@ vnoremap <Leader>s :sort<cr>
 vnoremap < <gv
 vnoremap > >gv
 
+"NERDTree directories color
 hi Directory guifg=#FF0000 ctermfg=blue
-
 hi NERDTreeOpenable ctermbg=None ctermfg=207 guifg=#ff5fff 
 hi NERDTreeClosable ctermbg=None ctermfg=207 guifg=#ff5fff
