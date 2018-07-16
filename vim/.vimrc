@@ -38,6 +38,7 @@ set wrap "Wrap lines
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 
+"highlighting
 set background=dark
 highlight Visual cterm=reverse ctermbg=0
 
@@ -101,6 +102,7 @@ nmap <Leader>vs vip<Leader>vs<CR>
 
 vnoremap <Leader>s :sort<cr>
 
+"indenting
 vnoremap < <gv
 vnoremap > >gv
 
