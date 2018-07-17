@@ -26,7 +26,6 @@ call vundle#end()
 filetype plugin indent on
 
 set term=screen-256color
-nmap <C-m> :NERDTreeToggle<CR>
 
 set spell spelllang=en_gb
 set nospell
@@ -110,3 +109,9 @@ vnoremap > >gv
 hi Directory guifg=#FF0000 ctermfg=blue
 hi NERDTreeOpenable ctermbg=None ctermfg=207 guifg=#ff5fff 
 hi NERDTreeClosable ctermbg=None ctermfg=207 guifg=#ff5fff
+
+nmap <Leader>f :NERDTreeToggle<CR>
+1
+"mode switching <Nul> == <C-space>
+imap <Nul> <Esc>
+nmap <Nul> i
