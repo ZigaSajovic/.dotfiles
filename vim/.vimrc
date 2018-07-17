@@ -111,7 +111,15 @@ hi NERDTreeOpenable ctermbg=None ctermfg=207 guifg=#ff5fff
 hi NERDTreeClosable ctermbg=None ctermfg=207 guifg=#ff5fff
 
 nmap <Leader>f :NERDTreeToggle<CR>
-1
+
 "mode switching <Nul> == <C-space>
 imap <Nul> <Esc>
-nmap <Nul> i
+"nmap <Nul> i
+
+"moving on wrap
+imap <UP> <ESC>gki
+imap <DOWN> <ESC>gji
+vmap <UP> gk
+vmap <DOWN> gj
+nmap <UP> gk
+nmap <DOWN> gj
