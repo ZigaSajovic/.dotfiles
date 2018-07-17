@@ -123,3 +123,16 @@ vmap <UP> gk
 vmap <DOWN> gj
 nmap <UP> gk
 nmap <DOWN> gj
+
+"sets correct escape keys
+set <S-UP>=[1;2A
+set <S-DOWN>=[1;2B
+set <S-LEFT>=[1;2D
+set <S-RIGHT>=[1;2C
+"sets escape keys for control
+"note that vim does not know <c-up/down>
+"so we map it explicitly
+map [1;5A <Nop>
+map [1;5B <Nop>
+set <C-LEFT>=[1;5D
+set <C-RIGHT>=[1;5C
