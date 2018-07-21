@@ -117,12 +117,12 @@ imap <Nul> <Esc>
 "nmap <Nul> i
 
 "moving on wrap
-imap <UP> <ESC>gki
-imap <DOWN> <ESC>gji
-vmap <UP> gk
-vmap <DOWN> gj
-nmap <UP> gk
-nmap <DOWN> gj
+inoremap <UP> <ESC>gki
+inoremap <DOWN> <ESC>gji
+vnoremap <UP> gk
+vnoremap <DOWN> gj
+nnoremap <UP> gk
+nnoremap <DOWN> gj
 
 "sets correct escape keys
 set <S-UP>=[1;2A
