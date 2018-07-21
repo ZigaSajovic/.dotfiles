@@ -32,6 +32,9 @@ set laststatus=1
 "turn of showing commands
 set noshowcmd
 
+"disable preview
+set completeopt-=preview
+
 "highlighting
 set background=dark
 highlight Visual cterm=reverse ctermbg=0
