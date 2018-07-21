@@ -11,6 +11,8 @@ Plug 'benmills/vimux'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 call plug#end()
 
 filetype plugin indent on
@@ -117,6 +119,25 @@ let g:python_host_prog='/home/ziga/miniconda3/bin/python'
 let g:python3_host_prog='/home/ziga/miniconda3/bin/python3'
 "this enables large modules to load before timeout (tf,np)
 let g:deoplete#sources#jedi#server_timeout=20
+
+"neosnippet
+let g:neosnippet#enable_completed_snippet=1
+imap <C-o>     <Plug>(neosnippet_expand_or_jump)
+smap <C-o>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-o>     <Plug>(neosnippet_expand_target)
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 "mode switching <Nul> == <C-space>
 imap <Nul> <Esc>
