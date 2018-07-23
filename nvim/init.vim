@@ -15,12 +15,9 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 call plug#end()
 
-filetype plugin indent on
-syntax on
-
 set spell spelllang=en_gb
 set nospell
-filetype indent on
+filetype plugin indent on
 syntax on
 set ai "Auto indent
 set si "Smart indent
@@ -60,19 +57,19 @@ set mat=1
 
 set autoread
 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+
+autocmd FileType * set tabstop=2 | set shiftwidth=2 
+      \ | set softtabstop=2 | set expandtab
+set smarttab
 
 set number relativenumber
 
 map <S-F8> :w !autopep8 --in-place --indent-size 2 --ignore E121 %
 "tabs
-nnoremap <Leader>tn :tabnew<Space>
-nnoremap <Leader>tk :tabnext<CR>
-nnoremap <Leader>tj :tabprev<CR>
-nmap <Leader>tl :exe "tabn ".g:last_tab_<CR>
+nnoremap tn :tabnew<Space>
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+nmap tl :exe "tabn ".g:last_tab_<CR>
 au TabLeave * let g:last_tab_= tabpagenr()
 "windows
 map <C-j> <C-W>j
@@ -119,6 +116,7 @@ let g:python_host_prog='/home/ziga/miniconda3/bin/python'
 let g:python3_host_prog='/home/ziga/miniconda3/bin/python3'
 "this enables large modules to load before timeout (tf,np)
 let g:deoplete#sources#jedi#server_timeout=20
+let g:LanguageClient_autoStart = 1
 
 "neosnippet
 let g:neosnippet#enable_completed_snippet=1
@@ -144,8 +142,8 @@ imap <Nul> <Esc>
 "nmap <Nul> i
 
 "moving on wrap
-inoremap <UP> <ESC>gki
-inoremap <DOWN> <ESC>gji
+inoremap <UP> <ESC>gka
+inoremap <DOWN> <ESC>gja
 vnoremap <UP> gk
 vnoremap <DOWN> gj
 nnoremap <UP> gk
@@ -163,3 +161,6 @@ map [1;5A <Nop>
 map [1;5B <Nop>
 set <C-LEFT>=[1;5D
 set <C-RIGHT>=[1;5C
+
+"mouse
+set mouse=a mousemodel=popup_setpos
