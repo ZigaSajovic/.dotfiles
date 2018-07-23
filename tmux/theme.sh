@@ -15,8 +15,18 @@ set -g status-left-length 32
 set -g status-right-length 150
 set -g status-interval 5
 
+# The window (GUI) title of the terminal will be based on the curent tmux window
+set-option -g set-titles on
+set-option -g set-titles-string "#T - #W"
+
+# highlight window when it has new activity
+setw -g monitor-activity on
+set -g visual-activity off
+set-window-option -g window-status-activity-attr reverse
+
+
 # default statusbar colors
-# set-option -g status-bg colour0
+set-option -g status-bg colour0
 set-option -g status-fg $tm_color_active
 set-option -g status-bg default
 set-option -g status-attr default
@@ -52,3 +62,4 @@ tm_session_name="#[fg=$tm_color_feature,bold]#S"
 
 set -g status-left $tm_session_name' '
 set -g status-right $tm_date' '$tm_host
+
