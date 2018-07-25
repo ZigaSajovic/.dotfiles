@@ -120,9 +120,14 @@ let g:LanguageClient_autoStart = 1
 
 "neosnippet
 let g:neosnippet#enable_completed_snippet=1
+
 imap <C-o>     <Plug>(neosnippet_expand_or_jump)
 smap <C-o>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-o>     <Plug>(neosnippet_expand_target)
+
+imap <C-k> <Esc>i<Plug>(neosnippet_expand_or_jump) 
+smap <C-k> <Esc>i<Plug>(neosnippet_expand_or_jump)
+
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <expr><TAB>
@@ -132,7 +137,7 @@ imap <expr><TAB>
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-" For conceal markers.
+ "For conceal markers.
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
@@ -149,6 +154,9 @@ vnoremap <DOWN> gj
 nnoremap <UP> gk
 nnoremap <DOWN> gj
 
+set splitbelow
+set splitright
+
 "sets correct escape keys
 set <S-UP>=[1;2A
 set <S-DOWN>=[1;2B
@@ -164,3 +172,4 @@ set <C-RIGHT>=[1;5C
 
 "mouse
 set mouse=a mousemodel=popup_setpos
+
