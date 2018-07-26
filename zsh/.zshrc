@@ -117,5 +117,8 @@ export PATH="/home/ziga/miniconda3/bin:$PATH"
     #[ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         #eval "$("$BASE16_SHELL/profile_helper.sh")"
 
+#set nvim as the default editor
+VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
+
 source ~/.dotfiles/zsh/prompt.zsh
 export PATH="$HOME/neovim/bin:$PATH"

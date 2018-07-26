@@ -142,9 +142,9 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
-"mode switching <Nul> == <C-space>
-imap <Nul> <Esc>
-"nmap <Nul> i
+""mode switching <C-,> == <C-space>
+"imap <C-,> <Esc>
+"nmap <C-,> i
 
 "moving on wrap
 inoremap <UP> <ESC>gka
