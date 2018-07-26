@@ -112,10 +112,10 @@ export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
 export PATH="/home/ziga/miniconda3/bin:$PATH"
 
 
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
+#BASE16_SHELL="$HOME/.config/base16-shell/"
+#[ -n "$PS1" ] && \
+    #[ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        #eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 source ~/.dotfiles/zsh/prompt.zsh
 export PATH="$HOME/neovim/bin:$PATH"
