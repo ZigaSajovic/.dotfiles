@@ -72,10 +72,10 @@ nnoremap tj :tabprev<CR>
 nmap tl :exe "tabn ".g:last_tab_<CR>
 au TabLeave * let g:last_tab_= tabpagenr()
 "windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 "copy/ paste
 noremap Y y$
 "comments
@@ -84,7 +84,7 @@ autocmd FileType bash setlocal commentstring=#\ %s
 autocmd FileType matlab setlocal commentstring=%\ %s
 autocmd FileType octave setlocal commentstring=%\ %s
 
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+noremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -125,16 +125,16 @@ imap <C-o>     <Plug>(neosnippet_expand_or_jump)
 smap <C-o>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-o>     <Plug>(neosnippet_expand_target)
 
-imap <C-k> <Esc>i<Plug>(neosnippet_expand_or_jump) 
-smap <C-k> <Esc>i<Plug>(neosnippet_expand_or_jump)
+inoremap <C-k> <Esc>i<Plug>(neosnippet_expand_or_jump) 
+snoremap <C-k> <Esc>i<Plug>(neosnippet_expand_or_jump)
 
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <expr><TAB>
+inoremap <expr><TAB>
  \ pumvisible() ? "\<C-n>" :
  \ neosnippet#expandable_or_jumpable() ?
  \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+snoremap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
  "For conceal markers.
@@ -152,7 +152,11 @@ inoremap <DOWN> <ESC>gja
 vnoremap <UP> gk
 vnoremap <DOWN> gj
 nnoremap <UP> gk
-nnoremap <DOWN> gj
+"
+nnoremap j gj
+vnoremap k gk
+vnoremap j gj
+nnoremap k gk
 
 set splitbelow
 set splitright
