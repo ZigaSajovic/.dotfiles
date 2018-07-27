@@ -81,7 +81,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-EDIITOR='vim'
+EDITOR='nvim'
 unsetopt AUTO_CD
 bindkey -v
 bindkey "^?" backward-delete-char
@@ -119,7 +119,7 @@ export PATH="/home/ziga/miniconda3/bin:$PATH"
 
 #set nvim as the default editor
 VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
-#caps-lock as escape
+#caps-lock as control
 setxkbmap -layout "$(setxkbmap -print | awk -F + '/xkb_symbols/ {print $2}')" -option ctrl:nocaps
 
 source ~/.dotfiles/zsh/prompt.zsh
