@@ -158,6 +158,12 @@ vnoremap k gk
 vnoremap j gj
 nnoremap k gk
 
+"moving to end/start of nonwhitechar of line
+nnoremap H ^
+nnoremap L g_
+vnoremap H ^
+vnoremap L g_
+
 set splitbelow
 set splitright
 
