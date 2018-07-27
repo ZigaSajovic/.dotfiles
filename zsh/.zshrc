@@ -119,6 +119,8 @@ export PATH="/home/ziga/miniconda3/bin:$PATH"
 
 #set nvim as the default editor
 VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
+#caps-lock as escape
+setxkbmap -layout "$(setxkbmap -print | awk -F + '/xkb_symbols/ {print $2}')" -option ctrl:nocaps
 
 source ~/.dotfiles/zsh/prompt.zsh
 export PATH="$HOME/neovim/bin:$PATH"
