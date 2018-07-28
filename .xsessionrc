@@ -1,6 +1,8 @@
 #!/bin/bash
 #caps-lock as control
 setxkbmap -layout "$(setxkbmap -print | awk -F + '/xkb_symbols/ {print $2}')" -option ctrl:nocaps
+#but caps lock is escape when pressed alone
+xcape -e 'Control_L=Escape'
 #id of the touchpad
 id=13
 prop_id=$(xinput list-props $id|grep -i natural|head -n1|cut -d"(" -f2|cut -d")" -f1)
