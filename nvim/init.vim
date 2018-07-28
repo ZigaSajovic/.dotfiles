@@ -152,6 +152,7 @@ inoremap <DOWN> <ESC>gja
 vnoremap <UP> gk
 vnoremap <DOWN> gj
 nnoremap <UP> gk
+nnoremap <DOWN> gj
 "
 nnoremap j gj
 vnoremap k gk
