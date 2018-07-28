@@ -1,0 +1,15 @@
+#!/bin/bash
+#caps-lock as control
+setxkbmap -layout "$(setxkbmap -print | awk -F + '/xkb_symbols/ {print $2}')" -option ctrl:nocaps
+#id of the touchpad
+id=13
+prop_id=$(xinput list-props $id|grep -i natural|head -n1|cut -d"(" -f2|cut -d")" -f1)
+xinput set-prop $id $prop_id 1
+#enable horizontal scroll
+prop_id=$(xinput list-props $id|grep -i hor|head -n1|cut -d"(" -f2|cut -d")" -f1)
+xinput set-prop $id $prop_id 1
+#enable tap to click
+prop_id=$(xinput list-props $id|grep -i tapping|head -n1|cut -d"(" -f2|cut -d")" -f1)
+xinput set-prop $id $prop_id 1
+#disable middle button
+xinput set-button-map $id 1 0 3
