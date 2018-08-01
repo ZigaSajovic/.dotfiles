@@ -57,10 +57,12 @@ set mat=1
 
 set autoread
 
-
+"filetype speific settings
 autocmd FileType * set tabstop=2 | set shiftwidth=2 
       \ | set softtabstop=2 | set expandtab
 set smarttab
+let g:tex_flavor = "latex"
+
 
 set number relativenumber
 
