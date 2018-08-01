@@ -11,6 +11,8 @@ Plug 'benmills/vimux'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
+Plug 'lervag/vimtex'
+
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 call plug#end()
@@ -113,6 +115,14 @@ nmap <Leader>f :NERDTreeToggle<CR>
 
 "deoplete
 let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+"deoplete + vimtex
+if !exists('g:deoplete#omni#input_patterns')
+      let g:deoplete#omni#input_patterns = {}
+  endif
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+
 "deoplete-jedi
 let g:python_host_prog='/home/ziga/miniconda3/bin/python'
 let g:python3_host_prog='/home/ziga/miniconda3/bin/python3'
@@ -122,13 +132,10 @@ let g:LanguageClient_autoStart = 1
 
 "neosnippet
 let g:neosnippet#enable_completed_snippet=1
-
 imap <C-o>     <Plug>(neosnippet_expand_or_jump)
 smap <C-o>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-o>     <Plug>(neosnippet_expand_target)
 
-inoremap <C-k> <Esc>i<Plug>(neosnippet_expand_or_jump) 
-snoremap <C-k> <Esc>i<Plug>(neosnippet_expand_or_jump)
 
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
