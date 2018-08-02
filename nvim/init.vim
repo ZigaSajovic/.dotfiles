@@ -58,6 +58,10 @@ set incsearch
 set mat=1
 
 set autoread
+"change to the directory
+autocmd BufEnter * silent! lcd %:p:h
+"work with buffers
+nnoremap <M-b> :buffers<CR>:buffer<Space> 
 
 "filetype speific settings
 autocmd FileType * set tabstop=2 | set shiftwidth=2 
