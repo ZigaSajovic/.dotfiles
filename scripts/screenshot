@@ -30,7 +30,7 @@ else
     base_folder="${1}"
     params="-window root"
 fi  
-
+echo ${base_folder}
 mkdir -p ${base_folder}
 file_path=${base_folder}$( date '+%Y-%m-%d_%H-%M-%S' )_screenshot.png
 import ${params} ${file_path}

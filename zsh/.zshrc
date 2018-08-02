@@ -122,3 +122,5 @@ VISUAL=nvim; export VISUAL EDITOR=nvim; export EDITOR
 
 source ~/.dotfiles/zsh/prompt.zsh
 export PATH="$HOME/neovim/bin:$PATH"
+export PATH="$HOME/.setup/scripts:$PATH"
+export PATH="$HOME/.dotfiles/scripts:$PATH"
