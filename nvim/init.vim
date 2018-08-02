@@ -79,7 +79,7 @@ set smarttab
 set number 
 
 "<S-F8>
-map <F20> :w !autopep8 --in-place --indent-size 2 --ignore E121 %
+map <F20> :w !autopep8 --in-place --indent-size 2 --ignore E121 %<CR>
 "tabs
 nnoremap tn :tabnew<Space>
 nnoremap tk :tabnext<CR>
