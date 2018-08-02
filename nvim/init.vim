@@ -46,7 +46,7 @@ let mapleader = ","
 nmap <leader>w :w!<cr>
 command W w !sudo tee % > /dev/null
 nmap <C-s> :w<CR>
-nmap <C-S> :w<Space>
+nmap <leader><C-s> :w<Space>
 set ruler
 
 "search
@@ -66,7 +66,7 @@ autocmd BufEnter * silent! lcd %:p:h
 "work with buffers
 nnoremap <M-b> :buffers<CR>:buffer<Space> 
 nnoremap <M-B> :w<CR>:buffers<CR>:buffer<Space>
-
+"
 "filetype speific settings
 autocmd FileType * set tabstop=2 | set shiftwidth=2 
       \ | set softtabstop=2 | set expandtab
