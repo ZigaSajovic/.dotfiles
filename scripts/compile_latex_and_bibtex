@@ -16,23 +16,29 @@ if not os.path.isfile(source_path):
 
 source_dir = os.path.dirname(source_path)
 source_base = os.path.basename(source_path)
-
 os.chdir(source_dir)
 pdf_dir = os.path.join(os.pardir, "pdf")
+
+
+def compile_latex():
+  if os.system(
+          "pdflatex -halt-on-error -output-directory %s %s" % (pdf_dir, source_base)):
+    exit(-1)
+
+
+def compile_bibtex():
+  if os.system("bibtex %s" % (source_base.split(".")[0])):
+    exit(-1)
+
 
 if not os.path.exists(pdf_dir):
   os.makedirs(pdf_dir)
 
-if os.system("pdflatex -halt-on-error -output-directory %s %s" % (pdf_dir, source_base)):
-  exit(-1)
-
+compile_latex()
 os.chdir(pdf_dir)
-if os.system("bibtex %s" % (source_base.split(".")[0])):
-  exit(-1)
-
+compile_bibtex()
 os.chdir(source_dir)
 for i in range(2):
-  if os.system("pdflatex -halt-on-error -output-directory %s %s" % (pdf_dir, source_base)):
-    exit(-1)
+  compile_latex()
 
 print("DONE.\nCompiled files can be found in %s" % os.path.realpath(pdf_dir))
