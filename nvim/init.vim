@@ -77,7 +77,7 @@ autocmd FileType * set tabstop=2 | set shiftwidth=2
 set smarttab
 let g:tex_flavor = "latex"
 
-set number relativenumber
+set number 
 
 map <S-F8> :w !autopep8 --in-place --indent-size 2 --ignore E121 %
 "tabs
