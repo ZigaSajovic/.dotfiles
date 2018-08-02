@@ -11,7 +11,6 @@ Plug 'benmills/vimux'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
-Plug 'lervag/vimtex'
 
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -24,6 +23,7 @@ syntax on
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 
@@ -75,11 +75,11 @@ nnoremap <leader><M-B> :w<CR>:buffers<CR>:vert sbuffer<Space>
 autocmd FileType * set tabstop=2 | set shiftwidth=2 
       \ | set softtabstop=2 | set expandtab
 set smarttab
-let g:tex_flavor = "latex"
 
 set number 
 
-map <S-F8> :w !autopep8 --in-place --indent-size 2 --ignore E121 %
+"<S-F8>
+map <F20> :w !autopep8 --in-place --indent-size 2 --ignore E121 %
 "tabs
 nnoremap tn :tabnew<Space>
 nnoremap tk :tabnext<CR>
@@ -133,12 +133,6 @@ nmap <Leader>f :NERDTreeToggle<CR>
 "deoplete
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-"deoplete + vimtex
-if !exists('g:deoplete#omni#input_patterns')
-      let g:deoplete#omni#input_patterns = {}
-  endif
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 "deoplete-jedi
 let g:python_host_prog='/home/ziga/miniconda3/bin/python'
