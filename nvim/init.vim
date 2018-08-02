@@ -51,7 +51,7 @@ set ruler
 
 "search
 vnoremap * "fy/<C-R>f<CR>
-map <silent> <leader><cr> :noh<cr>
+map <silent> <Esc> :noh<cr>
 set ignorecase
 set smartcase
 set hlsearch
