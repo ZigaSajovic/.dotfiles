@@ -42,6 +42,7 @@ highlight Visual cterm=reverse ctermbg=0
 highligh StatusLine cterm=NONE
 
 let mapleader = ","
+
 "saving
 nmap <leader>w :w!<cr>
 command W w !sudo tee % > /dev/null
@@ -66,13 +67,14 @@ autocmd BufEnter * silent! lcd %:p:h
 "work with buffers
 nnoremap <M-b> :buffers<CR>:buffer<Space> 
 nnoremap <M-B> :w<CR>:buffers<CR>:buffer<Space>
-"
+nnoremap <leader><M-b> :buffers<CR>:vert sbuffer<Space> 
+nnoremap <leader><M-B> :w<CR>:buffers<CR>:vert sbuffer<Space>
+
 "filetype speific settings
 autocmd FileType * set tabstop=2 | set shiftwidth=2 
       \ | set softtabstop=2 | set expandtab
 set smarttab
 let g:tex_flavor = "latex"
-
 
 set number relativenumber
 
@@ -83,11 +85,19 @@ nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nmap tl :exe "tabn ".g:last_tab_<CR>
 au TabLeave * let g:last_tab_= tabpagenr()
-"windows
+
+"switching windows
 noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
+"resizing windows
+noremap <C-M-J> :resize -5<CR>
+noremap <C-M-K> :resize +5<CR>
+noremap <C-M-H> :vertical resize -5<CR>
+noremap <C-M-L> :vertical  resize +5<CR>
+
+
 "copy/ paste
 noremap Y y$
 "comments
@@ -95,8 +105,6 @@ autocmd FileType python setlocal commentstring=#\ %s
 autocmd FileType bash setlocal commentstring=#\ %s
 autocmd FileType matlab setlocal commentstring=%\ %s
 autocmd FileType octave setlocal commentstring=%\ %s
-
-noremap <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
