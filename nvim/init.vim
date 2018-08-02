@@ -62,7 +62,7 @@ set autoread
 autocmd BufEnter * silent! lcd %:p:h
 "work with buffers
 nnoremap <M-b> :buffers<CR>:buffer<Space> 
-
+nnoremap <M-B> :w<CR>:buffers<CR>:buffer<Space>
 "filetype speific settings
 autocmd FileType * set tabstop=2 | set shiftwidth=2 
       \ | set softtabstop=2 | set expandtab
