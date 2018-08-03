@@ -47,6 +47,7 @@ let mapleader = ","
 "wildmenu
 let &wildcharm = &wildchar
 cnoremap <C-j> <DOWN>
+cnoremap <C-k> <UP>
 
 "saving
 nmap <leader>w :w!<cr>
