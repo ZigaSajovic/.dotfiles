@@ -23,6 +23,7 @@ syntax on
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+set linebreak
 
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
