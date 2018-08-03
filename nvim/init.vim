@@ -44,6 +44,10 @@ highligh StatusLine cterm=NONE
 
 let mapleader = ","
 
+"wildmenu
+let &wildcharm = &wildchar
+cnoremap <C-j> <DOWN>
+
 "saving
 nmap <leader>w :w!<cr>
 command W w !sudo tee % > /dev/null
