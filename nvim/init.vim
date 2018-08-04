@@ -68,8 +68,16 @@ set incsearch
 set mat=1
 
 set autoread
+
 "change to the directory
 autocmd BufEnter * silent! lcd %:p:h
+
+"persistent undo
+set undofile
+set undodir=$HOME/.nvim/undo
+
+set undolevels=1000
+set undoreload=10000
 
 "work with buffers
 nnoremap <M-b> :buffers<CR>:buffer<Space> 
@@ -77,19 +85,19 @@ nnoremap <M-B> :w<CR>:buffers<CR>:buffer<Space>
 nnoremap <leader><M-b> :buffers<CR>:vert sbuffer<Space> 
 nnoremap <leader><M-B> :w<CR>:buffers<CR>:vert sbuffer<Space>
 
+"set tabs
  set tabstop=2 | set shiftwidth=2 
       \ | set softtabstop=2 | set expandtab
-
-
-"filetype speific settings
+"just in case some filetypes override this seting
 autocmd FileType * set tabstop=2 | set shiftwidth=2 
       \ | set softtabstop=2 | set expandtab
 set smarttab
 
 set number 
 
-"<S-F8>
+"<F20> == <S-F8>
 map <F20> :w !autopep8 --in-place --indent-size 2 --ignore E121 %<CR>
+
 "tabs
 nnoremap tn :tabnew<Space>
 nnoremap tk :tabnext<CR>
