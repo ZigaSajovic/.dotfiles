@@ -51,7 +51,7 @@ cnoremap <C-k> <UP>
 
 "saving
 nmap <leader>w :w!<cr>
-command W w !sudo tee % > /dev/null
+command W w !sudo tee "%" > /dev/null
 nmap <C-s> :w<CR>
 nmap <leader><C-s> :w<Space>
 set ruler
@@ -76,6 +76,10 @@ nnoremap <M-b> :buffers<CR>:buffer<Space>
 nnoremap <M-B> :w<CR>:buffers<CR>:buffer<Space>
 nnoremap <leader><M-b> :buffers<CR>:vert sbuffer<Space> 
 nnoremap <leader><M-B> :w<CR>:buffers<CR>:vert sbuffer<Space>
+
+ set tabstop=2 | set shiftwidth=2 
+      \ | set softtabstop=2 | set expandtab
+
 
 "filetype speific settings
 autocmd FileType * set tabstop=2 | set shiftwidth=2 
