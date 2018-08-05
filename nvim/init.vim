@@ -45,6 +45,7 @@ highligh StatusLine cterm=NONE
 let mapleader = ","
 
 "wildmenu
+set wildmode=longest:full,full
 let &wildcharm = &wildchar
 cnoremap <C-j> <DOWN>
 cnoremap <C-k> <UP>
