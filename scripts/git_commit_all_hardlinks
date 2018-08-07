@@ -20,8 +20,11 @@ for f in args.files:
   lns = os.popen('find ~ -samefile %s 2>/dev/null' % pth).read()
   for ln in filter(lambda x: x != "", lns.split("\n")):
     ln_pth = os.path.realpath(ln)
-    ln_dir_name = os.path.dirname(ln_pth)
-    os.system('cd %s; git add %s; git commit -m "%s";' %
-              (ln_dir_name, ln_pth, args.msg))
+    ln_dir_name = os.path.dirname(ln_pth)    
+    os.chdir(ln_dir_name)
+    is_git=os.popen('git rev-parse --is-inside-work-tree 2>/dev/null').read()
+    if is_git: 
+      os.system('git add %s; git commit -m "%s";' %
+                (ln_pth, args.msg))
 
 exit(0)
