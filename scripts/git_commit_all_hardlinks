@@ -4,7 +4,7 @@ import os
 import argparse
 
 parser = argparse.ArgumentParser(
-  description="Commits file(s) to every repository containing a hard (logical) link to it.")
+  description="Commits file(s) to every repository containing a hard (logical) link to said file(s).")
 parser.add_argument("files", nargs="+",
                     help="Files to be added", type=str)
 parser.add_argument("-m", "--commit-msg", dest="msg", required=True,
