@@ -23,3 +23,4 @@ for f in args.files:
     ln_dir_name=os.path.dirname(ln_pth)
     os.system('cd %s; git add %s; git commit -m "%s";'%(ln_dir_name,ln_pth, args.msg))
 
+exit(0)
