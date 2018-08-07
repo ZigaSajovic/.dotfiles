@@ -15,12 +15,13 @@ for f in args.files:
   if not os.path.isfile(f):
     Warning("The file %s does not exists.")
     continue
-  pth=os.path.realpath(f)
-  dir_name=os.path.dirname(pth)
-  lns=os.popen('find ~ -samefile %s 2>/dev/null'%pth).read()
-  for ln in filter(lambda x: x != "",lns.split("\n")):
-    ln_pth=os.path.realpath(ln)
-    ln_dir_name=os.path.dirname(ln_pth)
-    os.system('cd %s; git add %s; git commit -m "%s";'%(ln_dir_name,ln_pth, args.msg))
+  pth = os.path.realpath(f)
+  dir_name = os.path.dirname(pth)
+  lns = os.popen('find ~ -samefile %s 2>/dev/null' % pth).read()
+  for ln in filter(lambda x: x != "", lns.split("\n")):
+    ln_pth = os.path.realpath(ln)
+    ln_dir_name = os.path.dirname(ln_pth)
+    os.system('cd %s; git add %s; git commit -m "%s";' %
+              (ln_dir_name, ln_pth, args.msg))
 
 exit(0)
