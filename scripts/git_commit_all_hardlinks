@@ -13,7 +13,7 @@ args = parser.parse_args()
 
 for f in args.files:
   if not os.path.isfile(f):
-    Warning("The file %s does not exists.")
+    print("Skipping the file '%s', as it does not exists."%f)
     continue
   pth = os.path.realpath(f)
   dir_name = os.path.dirname(pth)
