@@ -6,25 +6,32 @@ import argparse
 parser = argparse.ArgumentParser(
   description="Commits file(s) to every repository containing a hard (logical) link to said file(s).")
 parser.add_argument("files", nargs="+",
-                    help="Files to be added", type=str)
+                    help="Files to be added and commited.", type=str)
 parser.add_argument("-m", "--commit-msg", dest="msg", required=True,
-                    help="Message for commit.", type=str)
+                    nargs="+", help="Message(s) for commit.", type=str)
 args = parser.parse_args()
 
-for f in args.files:
+if len(args.msg) == 1:
+  args.msg *= len(args.files)
+elif len(args.msg) != len(args.files):
+  print("Not enough commit messages (%d) for %d files. Either have one commit message for all files, or provide a commit message for each of them." %
+        (len(args.msg), len(args.files)))
+  exit(-1)
+
+for f, m in zip(args.files, args.msg):
   if not os.path.isfile(f):
-    print("Skipping the file '%s', as it does not exists."%f)
+    print("Skipping the file '%s', as it does not exists." % f)
     continue
   pth = os.path.realpath(f)
   dir_name = os.path.dirname(pth)
   lns = os.popen('find ~ -samefile %s 2>/dev/null' % pth).read()
   for ln in filter(lambda x: x != "", lns.split("\n")):
     ln_pth = os.path.realpath(ln)
-    ln_dir_name = os.path.dirname(ln_pth)    
+    ln_dir_name = os.path.dirname(ln_pth)
     os.chdir(ln_dir_name)
-    is_git=os.popen('git rev-parse --is-inside-work-tree 2>/dev/null').read()
-    if is_git: 
+    is_git = os.popen('git rev-parse --is-inside-work-tree 2>/dev/null').read()
+    if is_git:
       os.system('git add %s; git commit -m "%s";' %
-                (ln_pth, args.msg))
+                (ln_pth, m))
 
 exit(0)
