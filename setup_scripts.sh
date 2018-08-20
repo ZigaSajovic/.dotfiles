@@ -1,6 +1,7 @@
 #!/bin/bash
+
 toAppend='export PATH="$HOME/.dotfiles/scripts:$PATH"'
-if [ -z "$(cat ~/.zshrc |grep $toAppend)" ]; then
+if [ -z '$(grep -q  "$toAppend" ~/.zshrc)' ]; then
   echo $toAppend >> ~/.zshrc
   . ~/.zshrc
 fi
