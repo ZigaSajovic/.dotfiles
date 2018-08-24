@@ -4,7 +4,7 @@ setxkbmap -layout "$(setxkbmap -print | awk -F + '/xkb_symbols/ {print $2}')" -o
 #but caps lock is escape when pressed alone
 xcape -e 'Control_L=Escape'
 #id of the touchpad
-id=13
+id=$(xinput list|grep Touchpad|grep -oE "id=[0-9]+"|cut -d'=' -f2)
 prop_id=$(xinput list-props $id|grep -i natural|head -n1|cut -d"(" -f2|cut -d")" -f1)
 xinput set-prop $id $prop_id 1
 #enable horizontal scroll
