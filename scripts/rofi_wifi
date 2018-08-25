@@ -1,0 +1,16 @@
+#!/bin/bash
+
+fields=$(cat ~/.dotfiles/var/rofi_wifi/fields)
+lines=$(nmcli --fields $fields dev wifi list|sed "/\(^--\|$(echo $fields|cut -d',' -f1)\)/d")
+cons=$(nmcli con show)
+state=$(nmcli -fields WIFI g)
+current=$(iwgetid -r)
+ssid_field=$(echo -e $fields| awk  'BEGIN{FS=","}{for(i=1;i<=NF;++i) {if($i ~ "SSID") print i}}')
+
+if [[ "$state" =~ "enabled" ]]; then
+	toggle="WiFi off"
+elif [[ "$state" =~ "disabled" ]]; then
+	toggle="WiFi on"
+fi
+
+selection=$(echo -e "$toggle\nmanual\n$lines" | rofi -dmenu -p "WiFi SSID" -config ~/.dotfiles/rofi/config.rasi)
