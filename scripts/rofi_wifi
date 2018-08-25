@@ -2,8 +2,9 @@
 
 toggle_entry="WiFi"
 
-fields=$(cat ~/.dotfiles/var/rofi_wifi/fields)
-lines=$(nmcli --fields $fields dev wifi list|sed "/\(^--\|$(echo $fields|cut -d',' -f1)\)/d"|sed 's/\s\+/  /g')
+fields="SSID,BARS,SECURITY"
+lines_full=$(nmcli --fields $fields dev wifi list|sed "/\(^--\|$(echo $fields|cut -d',' -f1)\)/d"|sed 's/\s\+/  /g')
+lines=$(echo -e $lines_full| awk -F "  " '{print $1"  "$2}')
 cons=$(nmcli con show)
 state=$(nmcli -fields WIFI g)
 current=$(iwgetid -r)
@@ -40,5 +41,11 @@ else
       chosen_cons = $(echo -e "$matches" | rofi -dmenu -p "Which" -config ~/.dotfiles/rofi/config.rasi)
       nmcli con up "$chosen_cons"
     fi
+  else
+    sec=$(echo $lines_full|grep $selection| awk '/(WPA|WEP)/')
+    if [[ -n "$sec" ]];then
+      password_=$(echo "Enter password of the newtork (or leave blank)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
+    fi
+    nmcli dev wifi con "$selection" password "$password_"
   fi
 fi
