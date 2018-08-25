@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/zsh
 
 toggle_entry="WiFi"
 
 fields="SSID,BARS,SECURITY"
 lines_full=$(nmcli --fields $fields dev wifi list|sed "/\(^--\|$(echo $fields|cut -d',' -f1)\)/d"|sed 's/\s\+/  /g')
-lines=$(echo -e $lines_full| awk -F "  " '{print $1"  "$2}')
+lines=$(echo -e "$lines_full"| awk -F "  " '{print $1"  "$2}')
 cons=$(nmcli con show)
 state=$(nmcli -fields WIFI g)
 current=$(iwgetid -r)
@@ -27,12 +27,12 @@ if [ "$selected_ssid" = "manual" ]; then
   else
     nmcli dev wifi con "$manual_ssid" password "$manual_password"
   fi
-elif [ "$selected_ssid" = "$toggle_entry on"];then
+elif [ "$selected_ssid" = "$toggle_entry on" ];then
   nmcli radio wifi on
-elif [ "$selected_ssid" = "$toggle_entry off"];then
+elif [ "$selected_ssid" = "$toggle_entry off" ];then
   nmcli radio wifi off
-else
-  matches=$(echo "$cons" |grep "$selected_ssid"|sed 's/\s\{2,\}/|/g'|awk -F "|" '{print $1}')
+elif [[ -n "$selection" ]];then
+  matches=$(echo -e "$cons" |sed 's/\s\{2,\}/|/g'|awk -F "|" "/$selected_ssid/{print \$1}")
   if [[ -n "$matches" ]];then
     n_matches=$(echo -e $matches |wc -l)
     if [[ "$n_matches" -eq "1" ]]; then
