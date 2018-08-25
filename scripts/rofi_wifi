@@ -37,8 +37,8 @@ else
     if [[ "$n_matches" -eq "1" ]]; then
       nmcli con up "$selected_ssid"
     else
-
+      chosen_cons = $(echo -e "$matches" | rofi -dmenu -p "Which" -config ~/.dotfiles/rofi/config.rasi)
+      nmcli con up "$chosen_cons"
     fi
   fi
-
 fi
