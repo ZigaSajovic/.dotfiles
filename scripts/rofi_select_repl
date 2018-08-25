@@ -1,0 +1,20 @@
+#!/bin/bash
+prompt_="REPL"
+
+repls_="""python
+R
+sml
+matlab"""
+repls=""
+
+for r in $repls_;do
+  res=$(ls /usr/bin|grep "^$r$")
+  if [ -n $res ];then
+    repls="$repls\n$r"
+  fi
+done
+
+repls=$(echo -e "$repls" |tail -n +2)
+
+selected_repl=$(echo -e "$repls" | rofi -dmenu -config "~/.dotfiles/rofi/config.rasi" -p "$prompt_")
+x-terminal-emulator -e "$selected_repl"
