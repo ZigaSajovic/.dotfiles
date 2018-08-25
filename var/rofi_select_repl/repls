@@ -1,0 +1,7 @@
+#FORMAT:
+#name to be displayed, command
+python,python
+R,R
+sml,sml
+octave,octave-cli
+matlab,matlab -nodisplay -nosplash
