@@ -1,11 +1,10 @@
 #!/bin/bash
-prompt_="repl"
 
-repls=$(awk '{FS=","}!/#|^$/{print $1}' ~/.dotfiles/var/rofi_select_repl/repls)
-commands_=$(awk '{FS=","}!/#|^$/{print $2}' ~/.dotfiles/var/rofi_select_repl/repls)
+prompt_="repl"
+repls=$(awk '{FS=","}!/#|^$/{print $1}' ~/.dotfiles/var/rofi_select_repl/config)
 
 selected_repl=$(echo -e "$repls" | rofi -dmenu -config "~/.dotfiles/rofi/config.rasi" -p "$prompt_")
 if [ -n "$selected_repl" ];then
-  command_=$(awk "{FS=\",\"}/$selected_repl/{print \$2}" ~/.dotfiles/var/rofi_select_repl/repls)
+  command_=$(awk "{FS=\",\"}/$selected_repl/{print \$2}" ~/.dotfiles/var/rofi_select_repl/config)
   x-terminal-emulator -e "$command_"
 fi
