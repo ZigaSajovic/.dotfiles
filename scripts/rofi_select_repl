@@ -1,10 +1,24 @@
 #!/bin/bash
 
 prompt_="repl"
-repls=$(awk '{FS=","}!/#|^$/{print $1}' ~/.dotfiles/var/rofi_select_repl/config)
+config_=/tmp/rofi_select_repl.config
+config_default=~/.dotfiles/var/rofi_select_repl/config
+repls_=$(awk '!/#|^$/{print }' $config_default)
 
+#on the first run, check if all commands exist
+#and create a separate config with only the existing commands
+if [ ! -f "$config_" ];then
+  echo -e "$repls_" |while read cmd;do
+    cmd_=$(echo $cmd|cut -d',' -f2|cut -d' ' -f1)
+    if [ -n "$(ls /usr/bin|grep ^$cmd_$)" ];then
+      echo $cmd >> $config_
+    fi
+  done
+fi
+
+repls=$(awk 'BEGIN {FS=","}{print $1}' "$config_")
 selected_repl=$(echo -e "$repls" | rofi -dmenu -config "~/.dotfiles/rofi/config.rasi" -p "$prompt_")
 if [ -n "$selected_repl" ];then
-  command_=$(awk "{FS=\",\"}/$selected_repl/{print \$2}" ~/.dotfiles/var/rofi_select_repl/config)
+  command_=$(awk "BEGIN {FS=\",\"}/$selected_repl/{print \$2}" "$config_")
   x-terminal-emulator -e "$command_"
 fi
