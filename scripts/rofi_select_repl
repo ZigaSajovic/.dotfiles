@@ -1,21 +1,9 @@
 #!/bin/bash
 prompt_="repl"
 
-repls_="""python
-R
-sml
-octave-cli"""
-repls=""
-
-for r in $repls_;do
-  res=$(ls /usr/bin|grep "^$r$")
-  if [ -n $res ];then
-    repls="$repls\n$r"
-  fi
-done
-
-repls=$(echo -e "$repls" |tail -n +2)
+repls=$(awk '{FS=","}!/#|^$/{print $1}' ~/.dotfiles/var/rofi_select_repl/repls)
+commands_=$(awk '{FS=","}!/#|^$/{print $2}' ~/.dotfiles/var/rofi_select_repl/repls)
 
 selected_repl=$(echo -e "$repls" | rofi -dmenu -config "~/.dotfiles/rofi/config.rasi" -p "$prompt_")
-
-x-terminal-emulator -e "$selected_repl"
+command_=$(awk "{FS=\",\"}/$selected_repl/{print \$2}" ~/.dotfiles/var/rofi_select_repl/repls)
+x-terminal-emulator -e "$command_"
