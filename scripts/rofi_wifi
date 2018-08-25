@@ -28,4 +28,6 @@ if [ "$selected_ssid" = "manual" ]; then
   fi
 elif [ "$selected_ssid" = "$toggle_entry on"];then
   nmcli radio wifi on
+elif [ "$selected_ssid" = "$toggle_entry off"];then
+  nmcli radio wifi off
 fi
