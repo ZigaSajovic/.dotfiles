@@ -3,7 +3,7 @@
 toggle_entry="WiFi"
 
 fields=$(cat ~/.dotfiles/var/rofi_wifi/fields)
-lines=$(nmcli --fields $fields dev wifi list|sed "/\(^--\|$(echo $fields|cut -d',' -f1)\)/d"|sed 's/\s\+/ /g')
+lines=$(nmcli --fields $fields dev wifi list|sed "/\(^--\|$(echo $fields|cut -d',' -f1)\)/d"|sed 's/\s\+/  /g')
 cons=$(nmcli con show)
 state=$(nmcli -fields WIFI g)
 current=$(iwgetid -r)
@@ -16,7 +16,7 @@ elif [[ "$state" =~ "disabled" ]]; then
 fi
 
 selection=$(echo -e "$toggle\nmanual\n$lines" | rofi -dmenu -p "WiFi SSID" -config ~/.dotfiles/rofi/config.rasi)
-selected_ssid=$(echo $selection|sed 's/\s\{1,\}/|/g'|awk 'BEGIN {FS="|"}{print $1}')
+selected_ssid=$(echo $selection|sed 's/\s\{2,\}/|/g'|awk -F "|" "{print \$$ssid_field}" )
 
 if [ "$selected_ssid" = "manual" ]; then
   manual_ssid=$(echo "Enter the SSID of the network." | rofi -dmenu -p "SSID" -config ~/.dotfiles/rofi/config.rasi)
@@ -30,4 +30,15 @@ elif [ "$selected_ssid" = "$toggle_entry on"];then
   nmcli radio wifi on
 elif [ "$selected_ssid" = "$toggle_entry off"];then
   nmcli radio wifi off
+else
+  matches=$(echo "$cons" |grep "$selected_ssid"|sed 's/\s\{2,\}/|/g'|awk -F "|" '{print $1}')
+  if [[ -n "$matches" ]];then
+    n_matches=$(echo -e $matches |wc -l)
+    if [[ "$n_matches" -eq "1" ]]; then
+      nmcli con up "$selected_ssid"
+    else
+
+    fi
+  fi
+
 fi
