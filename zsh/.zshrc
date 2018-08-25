@@ -123,6 +123,7 @@ EDITOR=nvim; export EDITOR
 SUDO_EDITOR=nvim; export SUDO_EDITOR
 
 source ~/.dotfiles/zsh/prompt.zsh
+source ~/.dotfiles/zsh/aliases.zsh
 export PATH="$HOME/neovim/bin:$PATH"
 export PATH="$HOME/.setup/scripts:$PATH"
 export PATH="$HOME/.dotfiles/scripts:$PATH"
