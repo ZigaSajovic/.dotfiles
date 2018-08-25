@@ -16,4 +16,4 @@ elif [[ "$state" =~ "disabled" ]]; then
 fi
 
 selection=$(echo -e "$toggle\nmanual\n$lines" | rofi -dmenu -p "WiFi SSID" -config ~/.dotfiles/rofi/config.rasi)
-selected_ssid=$(echo $selection|sed 's/\s\{2,\}/|/g)
+selected_ssid=$(echo $selection|sed 's/\s\{2,\}/|/g')
