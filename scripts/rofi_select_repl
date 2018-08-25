@@ -4,7 +4,7 @@ prompt_="REPL"
 repls_="""python
 R
 sml
-matlab"""
+octave-cli"""
 repls=""
 
 for r in $repls_;do
@@ -17,4 +17,5 @@ done
 repls=$(echo -e "$repls" |tail -n +2)
 
 selected_repl=$(echo -e "$repls" | rofi -dmenu -config "~/.dotfiles/rofi/config.rasi" -p "$prompt_")
+
 x-terminal-emulator -e "$selected_repl"
