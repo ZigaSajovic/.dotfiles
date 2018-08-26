@@ -13,6 +13,7 @@ state=$(nmcli -fields WIFI g)
 current=$(iwgetid -r)
 ssid_field=$(echo -e $fields| awk  'BEGIN{FS=","}{for(i=1;i<=NF;++i) {if($i ~ "SSID") print i}}')
 
+#Checks if wifi is currently enabled
 if [[ "$state" =~ "enabled" ]]; then
 	toggle="$toggle_entry off"
 elif [[ "$state" =~ "disabled" ]]; then
