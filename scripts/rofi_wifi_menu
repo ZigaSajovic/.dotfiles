@@ -1,4 +1,5 @@
 #!/bin/zsh
+#This script provides a rofi menu interface for wifi control
 
 toggle_entry="WiFi"
 create_option="New connection"
