@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 toggle_entry="WiFi"
+create_option="New connection"
 
 fields="SSID,BARS,SECURITY"
 lines_full=$(nmcli --fields $fields dev wifi list|sed "/\(^--\|$(echo $fields|cut -d',' -f1)\)/d"|sed 's/\s\+/  /g')
@@ -16,10 +17,10 @@ elif [[ "$state" =~ "disabled" ]]; then
 	toggle="$toggle_entry on"
 fi
 
-selection=$(echo -e "$toggle\n$lines\nNew connection" | rofi -dmenu -p "WiFi SSID" -config ~/.dotfiles/rofi/config.rasi)
+selection=$(echo -e "$toggle\n$lines\n$create_option" | rofi -dmenu -p "WiFi" -config ~/.dotfiles/rofi/config.rasi)
 selected_ssid=$(echo $selection|sed 's/\s\{2,\}/|/g'|awk -F "|" "{print \$$ssid_field}" )
 
-if [ "$selected_ssid" = "manual" ]; then
+if [ "$selected_ssid" = "$create_option" ]; then
   manual_ssid=$(echo "Enter the SSID of the network." | rofi -dmenu -p "SSID" -config ~/.dotfiles/rofi/config.rasi)
   manual_password=$(echo "Enter the Password of the network (or leave blank)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
   if [ "$manual_password" = "" ];then
