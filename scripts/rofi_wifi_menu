@@ -39,6 +39,7 @@ elif [ "$selected_ssid" = "$toggle_entry on" ];then
 #Toggle wifi off
 elif [ "$selected_ssid" = "$toggle_entry off" ];then
   nmcli radio wifi off
+#An existing connection was selected
 elif [[ -n "$selection" ]];then
   matches=$(echo -e "$cons" |sed 's/\s\{2,\}/|/g'|awk -F "|" "/$selected_ssid/{print \$1}")
   if [[ -n "$matches" ]];then
