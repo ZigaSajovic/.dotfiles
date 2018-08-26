@@ -1,5 +1,6 @@
 #!/bin/zsh
 #This script provides a rofi menu interface for wifi control
+#It uses and requires nmcli
 
 toggle_entry="WiFi"
 create_option="New connection"
