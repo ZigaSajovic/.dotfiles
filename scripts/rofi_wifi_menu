@@ -50,7 +50,7 @@ elif [[ -n "$selection" ]];then
       chosen_cons = $(echo -e "$matches" | rofi -dmenu -p "Which" -config ~/.dotfiles/rofi/config.rasi)
       nmcli con up "$chosen_cons"
     fi
-  else
+  else #if no matches 
     sec=$(echo $lines_full|grep $selection| awk '/(WPA|WEP)/')
     if [[ -n "$sec" ]];then
       password_=$(echo "Enter password of the newtork (or leave blank)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
