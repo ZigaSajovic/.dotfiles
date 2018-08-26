@@ -20,6 +20,7 @@ elif [[ "$state" =~ "disabled" ]]; then
 	toggle="$toggle_entry on"
 fi
 
+#Takes input from the user using a rofi menu
 selection=$(echo -e "$toggle\n$lines\n$create_option" | rofi -dmenu -p "WiFi" -config ~/.dotfiles/rofi/config.rasi)
 selected_ssid=$(echo $selection|sed 's/\s\{2,\}/|/g'|awk -F "|" "{print \$$ssid_field}" )
 
