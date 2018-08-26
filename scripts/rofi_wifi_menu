@@ -52,7 +52,7 @@ elif [[ -n "$selection" ]];then
     fi
   else #if no matches 
     sec=$(echo $lines_full|grep $selection| awk '/(WPA|WEP)/')
-    if [[ -n "$sec" ]];then
+    if [[ -n "$sec" ]];then #if network is secured, prompt for password
       password_=$(echo "Enter password of the newtork (or leave blank)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
     fi
     nmcli dev wifi con "$selection" password "$password_"
