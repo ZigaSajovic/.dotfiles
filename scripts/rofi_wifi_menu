@@ -42,7 +42,7 @@ elif [ "$selected_ssid" = "$toggle_entry off" ];then
 #An existing connection was selected
 elif [[ -n "$selection" ]];then
   matches=$(echo -e "$cons" |sed 's/\s\{2,\}/|/g'|awk -F "|" "/$selected_ssid/{print \$1}")
-  if [[ -n "$matches" ]];then
+  if [[ -n "$matches" ]];then #If a connection existis that matches the selected networks 
     n_matches=$(echo -e $matches |wc -l)
     if [[ "$n_matches" -eq "1" ]]; then
       nmcli con up "$selected_ssid"
