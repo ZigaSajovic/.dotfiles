@@ -36,6 +36,7 @@ if [ "$selected_ssid" = "$create_option" ]; then
 #Toggle wifi on
 elif [ "$selected_ssid" = "$toggle_entry on" ];then
   nmcli radio wifi on
+#Toggle wifi off
 elif [ "$selected_ssid" = "$toggle_entry off" ];then
   nmcli radio wifi off
 elif [[ -n "$selection" ]];then
