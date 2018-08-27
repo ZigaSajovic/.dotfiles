@@ -1,4 +1,4 @@
 #usb sound device added
-SUBSYSTEM=="sound", ACTION=="add", RUN+="/usr/bin/udev_usb_sound_change.sh
+SUBSYSTEM=="sound", ACTION=="add", RUN+="/usr/bin/udev_usb_sound_change.sh"
 #usb sound device removed
-SUBSYSTEM=="sound", ACTION=="remove", RUN+="/usr/bin/udev_usb_sound_change.sh
+SUBSYSTEM=="sound", ACTION=="remove", RUN+="/usr/bin/udev_usb_sound_change.sh"
