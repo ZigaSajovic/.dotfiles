@@ -59,7 +59,7 @@ elif [[ -n "$selection" ]];then
     #if security is 802.1x
     if [[ -n "$sec0" ]];then
       user_name=$(echo "Enter identity." | rofi -dmenu -p "Identity" -config ~/.dotfiles/rofi/config.rasi)
-      password=$(echo "Enter password of your identity (or leave empty)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
+      password0=$(echo "Enter password of your identity (or leave empty)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
       n_matches_=$(echo -e "$wlan_"|wc l-)
       #if more than one wlan device let user pick
       if [[ "$n_matches_" -gt "1" ]];then
@@ -68,7 +68,7 @@ elif [[ -n "$selection" ]];then
       #add connection
       nmcli con add type wifi con-name "$selected_ssid" ifname "$wlan_" ssid "$selected_ssid" -- \
         wifi-sec.key-mgmt wpa-eap 802-1x.eap ttls \
-        802-1x.phase2-auth mschapv2 802-1x.identity "$user_name" 802-1x.password "$password"
+        802-1x.phase2-auth mschapv2 802-1x.identity "$user_name" 802-1x.password "$password0"
       #connect
       nmcli con up "$selected_ssid"
     #if security is not 802.1x
