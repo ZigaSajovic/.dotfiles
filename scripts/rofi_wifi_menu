@@ -59,6 +59,9 @@ elif [[ -n "$selection" ]];then
     #if security is 802.1x
     if [[ -n "$sec0" ]];then
       user_name=$(echo "Enter identity." | rofi -dmenu -p "Identity" -config ~/.dotfiles/rofi/config.rasi)
+      if [[ -z "$user_name" ]];then
+        exit(1)
+      fi
       password0=$(echo "Enter password of your identity (or leave empty)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
       n_matches_=$(echo -e "$wlan_"|wc l-)
       #if more than one wlan device let user pick
