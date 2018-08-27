@@ -4,4 +4,4 @@
 # /usr/bin/headphones_unplug.sh for further processing.
 
 event=jack/headphone HEADPHONE unplug
-action=/usr/bin/headphones_unplug.sh
+action=/usr/bin/acpi_headphones_unplug.sh

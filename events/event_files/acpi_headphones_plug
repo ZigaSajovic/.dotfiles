@@ -4,4 +4,4 @@
 # /usr/bin/headphones_plug.sh for further processing.
 
 event=jack/headphone HEADPHONE plug
-action=/usr/bin/headphones_plug.sh
+action=/usr/bin/acpi_headphones_plug.sh
