@@ -53,11 +53,31 @@ elif [[ -n "$selection" ]];then
       chosen_cons = $(echo -e "$matches" | rofi -dmenu -p "Which" -config ~/.dotfiles/rofi/config.rasi)
       nmcli con up "$chosen_cons"
     fi
-  else #if no matches 
-    sec=$(echo $lines_full|grep $selection| awk '/(WPA|WEP)/')
-    if [[ -n "$sec" ]];then #if network is secured, prompt for password
-      password_=$(echo "Enter password of the newtork (or leave blank)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
+  else #if no matches
+    wlan_=$(nmcli dev|grep wifi|sed 's/ \{2,\}/|/g'|cut -d'|' -f1)  
+    sec0=$(echo $lines_full|grep $selection| awk '/802-1x/')
+    #if security is 802.1x
+    if [[ -n "$sec0" ]];then
+      user_name=$(echo "Enter identity." | rofi -dmenu -p "Identity" -config ~/.dotfiles/rofi/config.rasi)
+      password=$(echo "Enter password of your identity (or leave empty)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
+      n_matches_=$(echo -e "$wlan_"|wc l-)
+      #if more than one wlan device let user pick
+      if [[ "$n_matches_" -gt "1" ]];then
+        wlan_=$(echo -e "$wlan_" | rofi -dmenu -p "ifname" -config ~/.dotfiles/rofi/config.rasi)
+      fi
+      #add connection
+      nmcli con add type wifi con-name "$selected_ssid" ifname "$wlan_" ssid "$selected_ssid" -- \
+        wifi-sec.key-mgmt wpa-eap 802-1x.eap ttls \
+        802-1x.phase2-auth mschapv2 802-1x.identity "$user_name" 802-1x.password "$password"
+      #connect
+      nmcli con up "$selected_ssid"
+    #if security is not 802.1x
+    else
+      sec=$(echo $lines_full|grep $selection| awk '/(WPA|WEP)/')
+      if [[ -n "$sec" ]];then #if network is secured, prompt for password
+        password_=$(echo "Enter password of the newtork (or leave blank)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
+      fi
+      nmcli dev wifi con "$selected_ssid" password "$password_"
     fi
-    nmcli dev wifi con "$selection" password "$password_"
   fi
 fi
