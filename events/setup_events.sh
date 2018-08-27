@@ -29,3 +29,5 @@ done
 
 #reload udev rules
 sudo udevadm control --reload-rules
+#reload apci rules
+sudo /etc/init.d/acpid reload
