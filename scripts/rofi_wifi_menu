@@ -27,6 +27,9 @@ selected_ssid=$(echo $selection|sed 's/\s\{2,\}/|/g'|awk -F "|" "{print \$$ssid_
 #Create new connection
 if [ "$selected_ssid" = "$create_option" ]; then
   manual_ssid=$(echo "Enter the SSID of the network." | rofi -dmenu -p "SSID" -config ~/.dotfiles/rofi/config.rasi)
+  if [ -z "$manual_ssid" ];then
+    exit(1)
+  fi
   manual_password=$(echo "Enter the Password of the network (or leave blank)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
   if [ "$manual_password" = "" ];then
     nmcli dev wifi con "$manual_ssid"
