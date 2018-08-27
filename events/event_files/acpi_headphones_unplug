@@ -1,7 +1,7 @@
-# /etc/acpi/events/headphones_unplug
+# /etc/acpi/events/acpi_headphones_unplug
 # This is called when the user unplugs headphones 
 # it than calls
-# /usr/bin/headphones_unplug.sh for further processing.
+# /usr/bin/acpi_headphones_unplug.sh for further processing.
 
 event=jack/headphone HEADPHONE unplug
 action=/usr/bin/acpi_headphones_unplug.sh

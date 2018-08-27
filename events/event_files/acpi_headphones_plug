@@ -1,7 +1,7 @@
-# /etc/acpi/events/headphones_plug
+# /etc/acpi/events/acpi_headphones_plug
 # This is called when the user plugs in headphones 
 # it than calls
-# /usr/bin/headphones_plug.sh for further processing.
+# /usr/bin/acpi_headphones_plug.sh for further processing.
 
 event=jack/headphone HEADPHONE plug
 action=/usr/bin/acpi_headphones_plug.sh
