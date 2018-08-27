@@ -12,8 +12,8 @@ for env in event_files/acpi_*;do
 done
 
 #handle udev events
-for env in event_files/acpi_*;do 
-  env_=/etc/acpi/events/${env##*/}
+for env in event_files/udev_*;do 
+  env_=/etc/udev/rules.d/${env##*/}
   cp $env $env_ 
   chown root:root $env_ 
   chmod 644 $env_ 
@@ -26,3 +26,6 @@ for ac in action_files/*;do
   chown root:root $ac_ 
   chmod 755 $ac_
 done
+
+#reload udev rules
+sudo udevadm control --reload-rules
