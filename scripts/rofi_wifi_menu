@@ -3,7 +3,7 @@
 #It uses and requires nmcli
 
 toggle_entry="WiFi"
-create_option="New connection"
+create_option="Manual connection"
 
 fields="SSID,BARS,SECURITY"
 lines_full=$(nmcli --fields $fields dev wifi list|sed "/\(^--\|$(echo $fields|cut -d',' -f1)\)/d"|sed 's/\s\+/  /g')
@@ -30,11 +30,24 @@ if [ "$selected_ssid" = "$create_option" ]; then
   if [ -z "$manual_ssid" ];then
     exit 1
   fi
-  manual_password=$(echo "Enter the Password of the network (or leave blank)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
-  if [ "$manual_password" = "" ];then
-    nmcli dev wifi con "$manual_ssid"
+#if connection already exists
+  matches00=$(echo -e "$cons" |sed 's/\s\{2,\}/|/g'|awk -F "|" "/$manual_ssid/{print \$1}")
+  if [[ -n "$matches00" ]];then #If a match exists to the selected networks 
+    n_matches00=$(echo -e $matches00 |wc -l)
+    if [[ "$n_matches00" -eq "1" ]]; then #If only one match, connect
+      nmcli con up "$manual_ssid"
+    else #if more matches, prompt selection menu for which one to choose
+      chosen_cons00 = $(echo -e "$matches00" | rofi -dmenu -p "Which" -config ~/.dotfiles/rofi/config.rasi)
+      nmcli con up "$chosen_cons00"
+    fi
   else
-    nmcli dev wifi con "$manual_ssid" password "$manual_password"
+    #if no matches
+    manual_password=$(echo "Enter the Password of the network (or leave blank)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
+    if [ "$manual_password" = "" ];then
+      nmcli dev wifi con "$manual_ssid00"
+    else
+      nmcli dev wifi con "$manual_ssid00" password "$manual_password"
+    fi
   fi
 #Toggle wifi on
 elif [ "$selected_ssid" = "$toggle_entry on" ];then
