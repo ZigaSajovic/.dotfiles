@@ -1,0 +1,7 @@
+#!/bin/bash
+
+command_=$(rofi -dmenu -p "mpv" -theme ~/.dotfiles/var/rofi_mpv/theme.rasi)
+if [ -n "$command_" ];then
+  mpv "$command_"
+fi
+
