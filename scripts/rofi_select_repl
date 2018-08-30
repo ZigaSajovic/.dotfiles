@@ -18,7 +18,8 @@ fi
 
 repls=$(awk 'BEGIN {FS=","}{print $1}' "$config_")
 selected_repl=$(echo -e "$repls" | rofi -dmenu -config "~/.dotfiles/rofi/config.rasi" -p "$prompt_")
-if [ -n "$selected_repl" ];then
+does_match=$(echo -e "$repls" | grep "$selected_repl")
+if [[ -n "$selected_repl" ]] && [[ -n "$does_match" ]];then
   command_=$(awk "BEGIN {FS=\",\"}/$selected_repl/{print \$2}" "$config_")
   x-terminal-emulator -e "$command_"
 fi
