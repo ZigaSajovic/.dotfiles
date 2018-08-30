@@ -22,6 +22,10 @@ fi
 
 #Takes input from the user using a rofi menu
 selection=$(echo -e "$toggle\n$lines\n$create_option" | rofi -dmenu -p "WiFi" -config ~/.dotfiles/rofi/config.rasi)
+#if something else was selected, exit
+does_match=$(echo -e "$toggle\n$lines\n$create_option" | grep "$selection")
+[[ -n "$selection" ]] && [[ -z "$does_match" ]] && exit 1
+
 selected_ssid=$(echo $selection|sed 's/\s\{2,\}/|/g'|awk -F "|" "{print \$$ssid_field}" )
 
 #Create new connection
