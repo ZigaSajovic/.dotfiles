@@ -21,7 +21,7 @@ if (has("termguicolors"))
  set termguicolors
 endif
 colorscheme OceanicNext
-autocmd colorscheme * hi Normal guibg=NONE ctermbg=NONE
+autocmd colorscheme * hi Normal guibg=NONE | hi EndOfBuffer guibg=NONE | hi LineNr guibg=NONE 
 
 set spell spelllang=en_gb
 set nospell
