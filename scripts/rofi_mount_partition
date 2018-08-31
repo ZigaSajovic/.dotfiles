@@ -1,3 +1,17 @@
 #!/bin/bash
 
+get_match()
+{
+  selection=$(echo -e "$1" | rofi -dmenu -p "$2" -config ~/.dotfiles/rofi/config.rasi)
+  [[ -z "$selection" ]] && exit 1
+  does_match_=$(echo -e "$1" | grep "$selection")
+  [[ -n "$1" ]] && [[ -z "$does_match_" ]] && exit 1
+  echo "$selection"
+}
+
+mountable=$(lsblk -lp | grep "part \+$"|awk '{print $1,"("$4")"}'|sed 's/,/./g')
+to_show=$(echo -e "$mountable"|awk -F "/" '{print $(NF)}')
+[[ "$mountable" = "" ]] && exit 1
+selection=$(get_match "$to_show" "Partition")
+
 
