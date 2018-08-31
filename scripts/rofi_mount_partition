@@ -14,4 +14,6 @@ to_show=$(echo -e "$mountable"|awk -F "/" '{print $(NF)}')
 [[ "$mountable" = "" ]] && exit 1
 selection=$(get_match "$to_show" "Partition")
 
+dirs=$(find /mnt /media /home -type d -maxdepth 3 2>/dev/null)
+mount_point=$(get_match"$dirs" "Where to mount")
 
