@@ -10,9 +10,8 @@ get_match()
 }
 
 mountable=$(lsblk -lp | grep "part \+$"|awk '{print $1,"("$4")"}'|sed 's/,/./g')
-to_show=$(echo -e "$mountable"|awk -F "/" '{print $(NF)}')
 [[ "$mountable" = "" ]] && exit 1
-selection=$(get_match "$to_show" "Partition")
+selection=$(get_match "$mountable" "Partition" | awk '{print $1}')
 
 dirs=$(find /mnt /media /home -type d -maxdepth 3 2>/dev/null)
 mount_point=$(echo -e "$dirs" | rofi -dmenu -p "Where to mount" -config ~/.dotfiles/rofi/config.rasi)
@@ -22,3 +21,4 @@ if [[ ! -d "$mount_point" ]];then
   [[ "$mk_" = "Yes" ]] && sudo mkdir -p "$mount_point" || exit 1
 fi
 
+sudo mount "$selection" "$mount_point"
