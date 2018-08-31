@@ -155,7 +155,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let g:python_host_prog='/home/ziga/miniconda3/bin/python'
 let g:python3_host_prog='/home/ziga/miniconda3/bin/python3'
 "this enables large modules to load before timeout (tf,np)
-let g:deoplete#sources#jedi#server_timeout=20
+let g:deoplete#sources#jedi#server_timeout=50
 let g:LanguageClient_autoStart = 1
 
 "neosnippet
