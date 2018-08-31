@@ -17,9 +17,8 @@ selection=$(get_match "$to_show" "Partition")
 dirs=$(find /mnt /media /home -type d -maxdepth 3 2>/dev/null)
 mount_point=$(echo -e "$dirs" | rofi -dmenu -p "Where to mount" -config ~/.dotfiles/rofi/config.rasi)
 [[ "$mount_point" = "" ]] && exit 1
-if [[ ! -d "$mount_point ]];then
+if [[ ! -d "$mount_point" ]];then
   mk_=$(echo -e "Yes\nNo"|rofi -dmenu -p "Destination does not exist. Create it" -config ~/.dotfiles/rofi/config.rasi)
   [[ "$mk_" = "Yes" ]] && sudo mkdir -p "$mount_point" || exit 1
 fi
-
 
