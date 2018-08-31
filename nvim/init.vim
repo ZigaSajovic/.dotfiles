@@ -11,10 +11,17 @@ Plug 'benmills/vimux'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
+Plug 'mhartington/oceanic-next'
 
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 call plug#end()
+
+if (has("termguicolors"))
+ set termguicolors
+endif
+colorscheme OceanicNext
+autocmd colorscheme * hi Normal guibg=NONE ctermbg=NONE
 
 set spell spelllang=en_gb
 set nospell
@@ -38,9 +45,9 @@ set noshowcmd
 set completeopt-=preview
 
 "highlighting
-set background=dark
-highlight Visual cterm=reverse ctermbg=0
-highligh StatusLine cterm=NONE
+"set background=dark
+"highlight Visual cterm=reverse ctermbg=0
+"highligh StatusLine cterm=NONE
 
 let mapleader = ","
 
