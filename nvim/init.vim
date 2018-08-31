@@ -51,7 +51,6 @@ cnoremap <C-k> <UP>
 
 "saving
 nmap <leader>w :w!<cr>
-command W w !sudo tee "%" > /dev/null
 nmap <C-s> :w<CR>
 nmap <leader><C-s> :w<Space>
 set ruler
