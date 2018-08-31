@@ -19,7 +19,7 @@ mount_point=$(echo -e "$dirs" | rofi -dmenu -p "Where to mount" -config ~/.dotfi
 [[ "$mount_point" = "" ]] && exit 1
 if [[ ! -d "$mount_point ]];then
   mk_=$(echo -e "Yes\nNo"|rofi -dmenu -p "Destination does not exist. Create it" -config ~/.dotfiles/rofi/config.rasi)
-  [[ "$mk_" = "Yes" ]] $$ sudo mkdir -o "$mount_point"
+  [[ "$mk_" = "Yes" ]] && sudo mkdir -p "$mount_point" || exit 1
 fi
 
 
