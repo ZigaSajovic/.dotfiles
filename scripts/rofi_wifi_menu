@@ -11,7 +11,7 @@ lines=$(echo -e "$lines_full"| awk -F "  " '{print $1"  "$2}')
 cons=$(nmcli con show)
 state=$(nmcli -fields WIFI g)
 current=$(iwgetid -r)
-ssid_field=$(echo -e $fields| awk  'BEGIN{FS=","}{for(i=1;i<=NF;++i) {if($i ~ "SSID") print i}}')
+ssid_field=$(echo -e "$fields"| awk  'BEGIN{FS=","}{for(i=1;i<=NF;++i) {if($i ~ "SSID") print i}}')
 
 #Checks if wifi is currently enabled
 if [[ "$state" =~ "enabled" ]]; then
@@ -42,7 +42,7 @@ if [ "$selected_ssid" = "$create_option" ]; then
 #if connection already exists
   matches00=$(echo -e "$cons" |sed 's/\s\{2,\}/|/g'|awk -F "|" "/$manual_ssid/{print \$1}")
   if [[ -n "$matches00" ]];then #If a match exists to the selected networks 
-    n_matches00=$(echo -e $matches00 |wc -l)
+    n_matches00=$(echo -e "$matches00" |wc -l)
     if [[ "$n_matches00" -eq "1" ]]; then #If only one match, connect
       nmcli con up "$manual_ssid"
     else #if more matches, prompt selection menu for which one to choose
@@ -69,7 +69,7 @@ elif [[ -n "$selection" ]];then
   matches=$(echo -e "$cons" |sed 's/\s\{2,\}/|/g'|awk -F "|" "/$selected_ssid/{print \$1}")
 
   if [[ -n "$matches" ]];then #If a match exists to the selected networks 
-    n_matches=$(echo -e $matches |wc -l)
+    n_matches=$(echo -e "$matches" |wc -l)
     if [[ "$n_matches" -eq "1" ]]; then #If only one match, connect
       nmcli con up "$selected_ssid"
     else #if more matches, prompt selection menu for which one to choose
@@ -79,7 +79,7 @@ elif [[ -n "$selection" ]];then
 
   else #if no matches
     wlan_=$(nmcli dev|grep wifi|sed 's/ \{2,\}/|/g'|cut -d'|' -f1)  
-    sec0=$(echo $lines_full|grep $selection| awk '/802-1x/')
+    sec0=$(echo -e "$lines_full"|grep "$selection"| awk '/802-1x/')
     #if security is 802.1x
     if [[ -n "$sec0" ]];then
       user_name=$(echo "Enter identity." | rofi -dmenu -p "Identity" -config ~/.dotfiles/rofi/config.rasi)
@@ -100,7 +100,7 @@ elif [[ -n "$selection" ]];then
       nmcli con up "$selected_ssid"
     #if security is not 802.1x
     else
-      sec=$(echo $lines_full|grep $selection| awk '/(WPA|WEP)/')
+      sec=$(echo -e "$lines_full"|grep "$selection"| awk '/(WPA|WEP)/')
       if [[ -n "$sec" ]];then #if network is secured, prompt for password
         password_=$(echo "Enter password of the newtork (or leave blank)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
       fi
