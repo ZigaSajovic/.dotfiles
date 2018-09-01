@@ -21,7 +21,7 @@ if (has("termguicolors"))
  set termguicolors
 endif
 colorscheme OceanicNext
-autocmd colorscheme * hi Normal guibg=NONE | hi EndOfBuffer guibg=NONE | hi LineNr guibg=NONE 
+autocmd colorscheme * hi Normal guibg=NONE | hi EndOfBuffer guibg=NONE | hi LineNr guibg=NONE | hi TabLineFill NONE
 
 set spell spelllang=en_gb
 set nospell
@@ -44,7 +44,7 @@ set noshowcmd
 "disable preview
 set completeopt-=preview
 
-"highlighting
+"highlighting -> relevant when no colorscheme
 "set background=dark
 "highlight Visual cterm=reverse ctermbg=0
 "highligh StatusLine cterm=NONE
