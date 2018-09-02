@@ -12,6 +12,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'mhartington/oceanic-next'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -21,7 +23,8 @@ if (has("termguicolors"))
  set termguicolors
 endif
 colorscheme OceanicNext
-autocmd colorscheme * hi WildMenu gui=bold guifg=#1b2b34
+autocmd colorscheme * hi WildMenu gui=bold guifg=#1b2b34| hi TabLineFill NONE 
+
 "This makes your backgrounds transparent, so make sure your terminal
 "colorscheme is also OceanicNext
 "autocmd colorscheme * hi Normal guibg=NONE | hi EndOfBuffer guibg=NONE | hi LineNr guibg=NONE | hi TabLineFill NONE | hi ErrorMsg guibg=NONE | hi StatusLine gui=bold | hi StatusLine guibg=NONE | hi StatusLine guifg=#65737e | hi WildMenu guibg=NONE gui=bold guibg=#6699cc guifg=#1b2b34|hi Folded guibg=NONE guifg=#6699cc
