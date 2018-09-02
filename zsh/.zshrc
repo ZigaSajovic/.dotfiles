@@ -125,3 +125,5 @@ SUDO_EDITOR=nvim; export SUDO_EDITOR
 source ~/.dotfiles/zsh/prompt.zsh
 export PATH="$HOME/neovim/bin:$PATH"
 export PATH="$HOME/.dotfiles/scripts:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
