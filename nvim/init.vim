@@ -125,6 +125,7 @@ au TabLeave * let g:last_tab_= tabpagenr()
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=1 showmode ruler
+let g:fzf_layout = { 'down': '~25%' }
 
 "switching windows
 noremap <C-j> <C-W>j
