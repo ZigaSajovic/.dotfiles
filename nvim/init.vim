@@ -96,10 +96,8 @@ set undolevels=1000
 set undoreload=10000
 
 "work with buffers
-nnoremap <M-b> :buffers<CR>:buffer<Space> 
-nnoremap <M-B> :w<CR>:buffers<CR>:buffer<Space>
-nnoremap <leader><M-b> :buffers<CR>:vert sbuffer<Space> 
-nnoremap <leader><M-B> :w<CR>:buffers<CR>:vert sbuffer<Space>
+nnoremap <M-b> :Buffers<CR> 
+nnoremap <M-B> :w<CR>:Buffers<CR>
 
 "set tabs
  set tabstop=2 | set shiftwidth=2 
@@ -125,7 +123,7 @@ au TabLeave * let g:last_tab_= tabpagenr()
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=1 showmode ruler
-let g:fzf_layout = { 'down': '~25%' }
+let g:fzf_layout = { 'down': '~20%' }
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
