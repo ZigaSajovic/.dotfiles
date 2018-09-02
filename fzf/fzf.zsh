@@ -1,16 +1,16 @@
 # Setup fzf
 # ---------
-if [[ ! "$PATH" == */home/ziga/.fzf/bin* ]]; then
-  export PATH="$PATH:/home/ziga/.fzf/bin"
+if [[ ! "$PATH" == "*~/.fzf/bin*" ]]; then
+  export PATH="$PATH:~/.fzf/bin"
 fi
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "/home/ziga/.fzf/shell/completion.zsh" 2> /dev/null
+[[ $- == *i* ]] && source "~/.dotfiles/fzf/completion.zsh" 2> /dev/null
 
 # Key bindings
 # ------------
-source "/home/ziga/.fzf/shell/key-bindings.zsh"
+source "~/.dotfiles/fzf/key-bindings.zsh"
 
 # Color sheme
-source "/home/ziga/.dotfiles/fzf/oceanic_next.config"
+source "~/.dotfiles/fzf/oceanic_next.config"
