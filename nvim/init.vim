@@ -25,8 +25,6 @@ endif
 colorscheme OceanicNext
 autocmd colorscheme * hi WildMenu gui=bold guifg=#1b2b34| hi TabLineFill NONE
 
-
-
 "This makes your backgrounds transparent, so make sure your terminal
 "colorscheme is also OceanicNext
 "autocmd colorscheme * hi Normal guibg=NONE | hi EndOfBuffer guibg=NONE | hi LineNr guibg=NONE | hi TabLineFill NONE | hi ErrorMsg guibg=NONE | hi StatusLine gui=bold | hi StatusLine guibg=NONE | hi StatusLine guifg=#65737e | hi WildMenu guibg=NONE gui=bold guibg=#6699cc guifg=#1b2b34|hi Folded guibg=NONE guifg=#6699cc
@@ -178,7 +176,6 @@ vnoremap < <gv
 vnoremap > >gv
 
 "NERDTree directories color
-hi Directory guifg=#FF0000 ctermfg=blue
 hi NERDTreeOpenable ctermbg=None ctermfg=207 guifg=#ff5fff 
 hi NERDTreeClosable ctermbg=None ctermfg=207 guifg=#ff5fff
 nmap <Leader>f :NERDTreeToggle<CR>
@@ -252,4 +249,5 @@ set <C-RIGHT>=[1;5C
 
 "mouse
 set mouse=a mousemodel=popup_setpos
+
 
