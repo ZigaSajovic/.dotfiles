@@ -84,7 +84,7 @@ set mat=1
 set autoread
 
 "change to the directory
-autocmd BufEnter * silent! lcd %:p:h
+"autocmd BufEnter * silent! lcd %:p:h
 
 "persistent undo
 set undofile
