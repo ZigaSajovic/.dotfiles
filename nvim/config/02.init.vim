@@ -19,9 +19,6 @@ set noshowcmd
 "disable preview
 set completeopt-=preview
 
-"define leader
-let mapleader = ","
-
 "wildmenu
 let &wildcharm = &wildchar
 
