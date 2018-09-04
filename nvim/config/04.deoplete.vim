@@ -4,7 +4,6 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 "this enables large modules to load before timeout (tf,np)
 let g:deoplete#sources#jedi#server_timeout=50
-let g:LanguageClient_autoStart = 1
 
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
