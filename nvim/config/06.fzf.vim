@@ -22,3 +22,6 @@ let g:fzf_colors =
 "work with buffers
 nnoremap <M-b> :Buffers<CR> 
 nnoremap <M-B> :w<CR>:Buffers<CR>
+"work with files
+nnoremap <M-f> :Files<Space>
+nnoremap <M-F> :w<CR>:Files<Space>
