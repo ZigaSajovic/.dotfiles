@@ -24,4 +24,5 @@ nnoremap <M-b> :Buffers<CR>
 nnoremap <M-B> :w<CR>:Buffers<CR>
 "work with files
 nnoremap <M-f> :Files<CR>
-nnoremap <M-F> :w<CR>:Files<CR>
+nnoremap <M-F> <CR>:Files<Space>
+
