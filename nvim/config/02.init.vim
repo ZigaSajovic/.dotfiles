@@ -1,3 +1,6 @@
+"define leader
+let mapleader = ","
+
 set spell spelllang=en_gb
 set nospell
 filetype plugin indent on

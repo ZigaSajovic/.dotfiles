@@ -23,9 +23,9 @@ let g:fzf_colors =
 nnoremap <M-b> :Buffers<CR> 
 nnoremap <M-B> :w<CR>:Buffers<CR>
 "work with files
-nnoremap <M-f> :Files<CR>
-nnoremap <M-F> :Files<Space>
+nmap <Leader><M-f> :Files<CR>
+nmap <M-f> :Files<Space>
 "work with Ag
-nnoremap <Leader><M-a> :Ag<CR>
-nnoremap <M-a> :Ag<Space>
+nmap <Leader><M-a> :Ag<CR>
+nmap <M-a> :Ag<Space>
 

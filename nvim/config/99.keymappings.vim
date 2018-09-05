@@ -1,6 +1,3 @@
-"define leader
-let mapleader = ","
-
 "wildmenu descend etc
 cnoremap <C-j> <DOWN>
 cnoremap <C-k> <UP>
