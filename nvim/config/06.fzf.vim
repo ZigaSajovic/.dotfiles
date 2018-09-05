@@ -52,8 +52,7 @@ command! -nargs=* Agc call fzf#run({
 \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
 \ 'sink*':    function('<sid>ag_handler'),
 \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
-\            '--multi --bind=alt-a:select-all,alt-d:deselect-all '.
-\            '--color hl:68,hl+:110',
+\            '--multi --bind=alt-a:select-all,alt-d:deselect-all ',
 \ 'down':    '~20%'
 \ })
 
