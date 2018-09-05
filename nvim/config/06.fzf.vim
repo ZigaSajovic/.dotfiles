@@ -28,4 +28,7 @@ nmap <M-f> :Files<Space>
 "work with Ag
 nmap <Leader><M-a> :Ag<CR>
 nmap <M-a> :Ag<Space>
+"work with search
+nmap <M-l> :BLines<CR>
+nmap <Leader><M-s> :Lines<CR>
 
