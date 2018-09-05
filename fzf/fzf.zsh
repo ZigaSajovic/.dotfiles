@@ -13,4 +13,4 @@ fi
 source ~/.dotfiles/fzf/key-bindings.zsh
 
 # Color sheme
-source ~/.dotfiles/fzf/oceanic_next.config
+source ~/.dotfiles/fzf/color_scheme.config
