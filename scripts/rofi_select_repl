@@ -10,9 +10,7 @@ repls_=$(awk '!/#|^$/{print }' $config_default)
 if [ ! -f "$config_" ];then
   echo -e "$repls_" |while read cmd;do
     cmd_=$(echo $cmd|cut -d',' -f2|cut -d' ' -f1)
-    if [ -n "$(ls /usr/bin|grep ^$cmd_$)" ];then
-      echo $cmd >> $config_
-    fi
+    hash "$cmd_" && echo $cmd >> $config_
   done
 fi
 
