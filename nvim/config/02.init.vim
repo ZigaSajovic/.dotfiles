@@ -67,6 +67,9 @@ autocmd FileType bash setlocal commentstring=#\ %s
 autocmd FileType matlab setlocal commentstring=%\ %s
 autocmd FileType octave setlocal commentstring=%\ %s
 
+"latex type
+let g:tex_flavor = "latex"
+
 "set cursor at line number of last location at previous viewing
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
