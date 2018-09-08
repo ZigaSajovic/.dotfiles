@@ -52,7 +52,8 @@ command! -nargs=* Agc call fzf#run({
 \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
 \ 'sink*':    function('<sid>ag_handler'),
 \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
-\            '--multi --bind=alt-a:select-all,alt-d:deselect-all ',
+\            '--multi --bind=alt-a:select-all,alt-d:deselect-all '.
+\             '--prompt "Agc> "',
 \ 'down':    '~20%'
 \ })
 
@@ -61,7 +62,8 @@ command! -nargs=* Ag call fzf#run({
 \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
 \ 'sink*':    function('<sid>ag_handler'),
 \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
-\            '--multi --bind=alt-a:select-all,alt-d:deselect-all ',
+\            '--multi --bind=alt-a:select-all,alt-d:deselect-all '.
+\             '--prompt "Ag> "',
 \ 'down':    '~20%'
 \ })
 
