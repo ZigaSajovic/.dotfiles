@@ -56,6 +56,16 @@ command! -nargs=* Agc call fzf#run({
 \ 'down':    '~20%'
 \ })
 
+command! -nargs=* Ag call fzf#run({
+\ 'source':  printf('ag --nogroup --column --color "%s"',
+\                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
+\ 'sink*':    function('<sid>ag_handler'),
+\ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
+\            '--multi --bind=alt-a:select-all,alt-d:deselect-all ',
+\ 'down':    '~20%'
+\ })
+
+
 "work with buffers
 nnoremap <M-b> :Buffers<CR> 
 nnoremap <M-B> :w<CR>:Buffers<CR>
