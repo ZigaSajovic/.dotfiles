@@ -33,12 +33,12 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 
 "copy/ paste
 nnoremap Y y$
-nnoremap <Leader>y "*y
-xnoremap <Leader>y "*y
-nnoremap <Leader>p "*p
-xnoremap <Leader>p "*p
-nnoremap <Leader>P "*P
-xnoremap <Leader>P "*P
+nnoremap <Leader>y "+y
+xnoremap <Leader>y "+y
+nnoremap <Leader>p "+p
+xnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
+xnoremap <Leader>P "+P
 
 "sort seection
 xnoremap <Leader>s :sort<cr>
