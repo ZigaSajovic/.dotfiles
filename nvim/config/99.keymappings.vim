@@ -58,3 +58,5 @@ nnoremap H ^
 nnoremap L g_
 vnoremap H ^
 vnoremap L g
+onoremap H ^
+onoremap L g
