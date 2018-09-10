@@ -68,6 +68,6 @@ onoremap j gj
 nnoremap H ^
 nnoremap L g_
 xnoremap H ^
-xnoremap L g
+xnoremap L g_
 onoremap H ^
-onoremap L g
+onoremap L g_
