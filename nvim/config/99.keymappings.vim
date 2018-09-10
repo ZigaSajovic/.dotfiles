@@ -27,7 +27,7 @@ noremap <C-M-H> :vertical resize -5<CR>
 noremap <C-M-L> :vertical  resize +5<CR>
 
 "copy/ paste
-noremap Y y$
+nnoremap Y y$
 
 "sort seection
 vnoremap <Leader>s :sort<cr>
