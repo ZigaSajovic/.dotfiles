@@ -39,15 +39,19 @@ vnoremap > >gv
 "moving on wrap
 inoremap <UP> <ESC>gka
 inoremap <DOWN> <ESC>gja
-vnoremap <UP> gk
-vnoremap <DOWN> gj
-nnoremap <UP> gk
-nnoremap <DOWN> gj
+noremap <UP> gk
+noremap <DOWN> gj
+noremap <UP> gk
+noremap <DOWN> gj
+onoremap <UP> gk
+onoremap <DOWN> gj
 "
+nnoremap k gk
 nnoremap j gj
 vnoremap k gk
 vnoremap j gj
-nnoremap k gk
+onoremap k gk
+onoremap j gj
 
 "moving to end/start of nonwhitechar of line
 nnoremap H ^
