@@ -8,7 +8,7 @@ nmap <C-s> :w<CR>
 nmap <leader><C-s> :w<Space>
 
 "search
-vnoremap * "fy/<C-R>f<CR>
+xnoremap * "fy/<C-R>f<CR>
 nmap <silent> <leader>q :noh<cr>
 vmap <silent> <leader>q :noh<cr>
 
@@ -30,11 +30,11 @@ noremap <C-M-L> :vertical  resize +5<CR>
 nnoremap Y y$
 
 "sort seection
-vnoremap <Leader>s :sort<cr>
+xnoremap <Leader>s :sort<cr>
 
 "indenting
-vnoremap < <gv
-vnoremap > >gv
+xnoremap < <gv
+xnoremap > >gv
 
 "moving on wrap
 inoremap <UP> <ESC>gka
@@ -48,15 +48,15 @@ onoremap <DOWN> gj
 "
 nnoremap k gk
 nnoremap j gj
-vnoremap k gk
-vnoremap j gj
+xnoremap k gk
+xnoremap j gj
 onoremap k gk
 onoremap j gj
 
 "moving to end/start of nonwhitechar of line
 nnoremap H ^
 nnoremap L g_
-vnoremap H ^
-vnoremap L g
+xnoremap H ^
+xnoremap L g
 onoremap H ^
 onoremap L g
