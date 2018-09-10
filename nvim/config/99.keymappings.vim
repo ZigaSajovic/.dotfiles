@@ -25,6 +25,11 @@ noremap <C-M-J> :resize -5<CR>
 noremap <C-M-K> :resize +5<CR>
 noremap <C-M-H> :vertical resize -5<CR>
 noremap <C-M-L> :vertical  resize +5<CR>
+"switching windows for terminal
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
 
 "copy/ paste
 nnoremap Y y$
