@@ -10,7 +10,7 @@ nmap <leader><C-s> :w<Space>
 "search
 xnoremap * "fy/<C-R>f<CR>
 nmap <silent> <leader>q :noh<cr>
-vmap <silent> <leader>q :noh<cr>
+xmap <silent> <leader>q :noh<cr>
 
 "<F20> == <S-F8>
 map <F20> :w !autopep8 --in-place --indent-size 2 --ignore E121 %<CR>
