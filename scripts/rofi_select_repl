@@ -5,14 +5,14 @@ config_=/tmp/rofi_select_repl.config
 config_default=~/.dotfiles/var/rofi_select_repl/config
 repls_=$(awk '!/#|^$/{print }' $config_default)
 
-#on the first run, check if all commands exist
+[[ -f "$config_" ]] && rm "$config_"
+
+#check if all commands exist
 #and create a separate config with only the existing commands
-if [ ! -f "$config_" ];then
-  echo -e "$repls_" |while read cmd;do
-    cmd_=$(echo $cmd|cut -d',' -f2|cut -d' ' -f1)
-    hash "$cmd_" 2>/dev/null && echo $cmd >> $config_
-  done
-fi
+echo -e "$repls_" |while read cmd;do
+  cmd_=$(echo $cmd|cut -d',' -f2|cut -d' ' -f1)
+  hash "$cmd_" 2>/dev/null && echo $cmd >> $config_
+done
 
 repls=$(awk 'BEGIN {FS=","}{print $1}' "$config_")
 selected_repl=$(echo -e "$repls" | rofi -dmenu -config "~/.dotfiles/rofi/config.rasi" -p "$prompt_")
