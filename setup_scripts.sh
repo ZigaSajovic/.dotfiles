@@ -6,4 +6,4 @@ if [ -z '$(grep -q  "$toAppend" ~/.zshrc)' ]; then
   . ~/.zshrc
 fi
 cd scripts
-sudo chmod u=rwx "$(ls -p | grep -v /)" 
+sudo chmod u=rwx $(ls -p | grep -v /) 
