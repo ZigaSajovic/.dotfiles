@@ -6,8 +6,8 @@ toggle_entry="WiFi"
 create_option="Manual connection"
 
 fields="SSID,BARS,SECURITY"
-lines_full=$(nmcli --fields $fields dev wifi list|sed "/\(^--\|$(echo $fields|cut -d',' -f1)\)/d"|sed 's/\s\+/  /g')
-lines=$(echo -e "$lines_full"| awk -F "  " '{print $1"  "$2}')
+lines_full=$(nmcli --fields $fields dev wifi list|sed "/\(^--\|$(echo $fields|cut -d',' -f1)\)/d"|sed 's/\s\{2,\}/_:_/g')
+lines=$(echo -e "$lines_full"| awk -F "_:_" '{print $1"  "$2}')
 cons=$(nmcli con show)
 state=$(nmcli -fields WIFI g)
 current=$(iwgetid -r)
@@ -79,7 +79,8 @@ elif [[ -n "$selection" ]];then
 
   else #if no matches
     wlan_=$(nmcli dev|grep wifi|sed 's/ \{2,\}/|/g'|cut -d'|' -f1)  
-    sec0=$(echo -e "$lines_full"|grep "$selection"| awk '/802-1x/')
+    sec0=$(echo -e "$lines_full"|grep "$selected_ssid"| awk '/802\.1X/')
+
     #if security is 802.1x
     if [[ -n "$sec0" ]];then
       user_name=$(echo "Enter identity." | rofi -dmenu -p "Identity" -config ~/.dotfiles/rofi/config.rasi)
@@ -87,7 +88,7 @@ elif [[ -n "$selection" ]];then
         exit 1
       fi
       password0=$(echo "Enter password of your identity (or leave empty)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
-      n_matches_=$(echo -e "$wlan_"|wc l-)
+      n_matches_=$(echo -e "$wlan_"|wc -l)
       #if more than one wlan device let user pick
       if [[ "$n_matches_" -gt "1" ]];then
         wlan_=$(get_match "$wlan_" "ifname")
@@ -100,7 +101,7 @@ elif [[ -n "$selection" ]];then
       nmcli con up "$selected_ssid"
     #if security is not 802.1x
     else
-      sec=$(echo -e "$lines_full"|grep "$selection"| awk '/(WPA|WEP)/')
+      sec=$(echo -e "$lines_full"|grep "$selected_ssid"| awk '/(WPA|WEP)/')
       if [[ -n "$sec" ]];then #if network is secured, prompt for password
         password_=$(echo "Enter password of the newtork (or leave blank)." | rofi -dmenu -p "Password" -config ~/.dotfiles/rofi/config.rasi)
       fi
