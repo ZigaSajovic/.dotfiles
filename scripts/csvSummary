@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+import pandas as pd
+import sys
+import os
+import argparse
+
+parser = argparse.ArgumentParser(
+  description="Creates a summary of a csv file, delimited by sep.")
+parser.add_argument("-d", "--delimiter", dest="delim",
+                    help="Delimiter to use", type=str, default=",")
+parser.add_argument("-H", "--header", dest="header", action ='store_true',
+                    help="Is there a header")
+parser.add_argument("-f", "--file", dest="file",
+                    help="File to read from. If None, it will read from stdin.", type=str, default=None)
+args = parser.parse_args()
+
+df = pd.read_csv(sys.stdin if args.file is None else args.file,
+                 sep=args.delim, header="infer" if args.header else None)
+
+print(df.describe())
