@@ -50,7 +50,7 @@ set undoreload=10000
 autocmd FileType * set tabstop=2 | set shiftwidth=2 
       \ | set softtabstop=2 | set expandtab
 set smarttab
-
+set breakindent
 "line numbering
 set number 
 
@@ -73,9 +73,9 @@ let g:tex_flavor = "latex"
 "set cursor at line number of last location at previous viewing
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-"python binaries
-let g:python_host_prog='/home/ziga/miniconda3/bin/python'
-let g:python3_host_prog='/home/ziga/miniconda3/bin/python3'
+""python binaries
+"let g:python_host_prog='/usr/bin/python'
+"let g:python3_host_prog='/usr/bin/python3'
 
 "sets correct escape keys
 set <S-UP>=[1;2A
