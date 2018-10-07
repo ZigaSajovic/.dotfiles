@@ -63,7 +63,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
   git,
   vi_mode,
-  tmux
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -92,38 +91,8 @@ bindkey "^?" backward-delete-char
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# personal aliases, overriding those provided by oh--zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-#
-#
-
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
-export CUDA_HOME=/usr/local/cuda
-export PATH="$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH"
-
-# added by Miniconda3 installer
-export PATH="/home/ziga/miniconda3/bin:$PATH"
-
-
-#BASE16_SHELL="$HOME/.config/base16-shell/"
-#[ -n "$PS1" ] && \
-    #[ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        #eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-#set nvim as the default editor
-VISUAL=nvim; export VISUAL
-EDITOR=nvim; export EDITOR
-SUDO_EDITOR=nvim; export SUDO_EDITOR
-
+source ~/.dotfiles/zsh/exports.zsh
+source ~/.dotfiles/zsh/alias.zsh
 source ~/.dotfiles/zsh/prompt.zsh
-export PATH="$HOME/neovim/bin:$PATH"
-export PATH="$HOME/.dotfiles/scripts:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
