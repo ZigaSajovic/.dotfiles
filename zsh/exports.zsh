@@ -5,3 +5,4 @@ export PATH="$PATH:$HOME/bin"
 VISUAL=nvim; export VISUAL
 EDITOR=nvim; export EDITOR
 SUDO_EDITOR=nvim; export SUDO_EDITOR
+export PATH="$HOME/.dotfiles/scripts:$PATH"
