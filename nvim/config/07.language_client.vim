@@ -6,3 +6,5 @@ let g:LanguageClient_serverCommands = {
     \ }
 
 let g:LanguageClient_diagnosticsEnable=0
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
