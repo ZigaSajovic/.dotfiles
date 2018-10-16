@@ -48,7 +48,7 @@ endfunction
 
 command! -nargs=* Agc call fzf#run({
 \ 'source':  printf('ag --nogroup --column --color -G %s "%s"',
-\                   escape(escape(expand('%'),'"\'),'.'),
+\                   expand('%'),
 \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
 \ 'sink*':    function('<sid>ag_handler'),
 \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
@@ -80,4 +80,3 @@ nmap <M-a> :Ag<Space>
 "work with search
 nmap <M-l> :BLines<CR>
 nmap <Leader><M-s> :Lines<CR>
-
