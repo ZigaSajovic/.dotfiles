@@ -20,4 +20,5 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'vimwiki/vimwiki'
+Plug 'JamshedVesuna/vim-markdown-preview'
 call plug#end()
