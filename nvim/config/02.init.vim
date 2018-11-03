@@ -53,6 +53,7 @@ set smarttab
 set breakindent
 "line numbering
 set number 
+set relativenumber
 
 "split directions
 set splitbelow
