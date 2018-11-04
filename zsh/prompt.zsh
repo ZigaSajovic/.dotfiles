@@ -76,5 +76,15 @@ precmd() {
 
 PROMPT_SYMBOL='❯'
 
-export PROMPT='%(?.%F{207}.%F{160})$PROMPT_SYMBOL%f '
+get_prompt_color(){
+  last_=$?
+  is_normal_mode=$(vi_mode_prompt_info)
+  if [[ -z "$is_normal_mode" ]]; then
+    ([[ "$last_" -eq 0 ]] && echo 207) || echo 161 
+  else
+    echo 75
+  fi
+}
+
+export PROMPT='%F{`get_prompt_color`}$PROMPT_SYMBOL%f '
 export RPROMPT='`git_dirty`%F{241}$vcs_info_msg_0_%f`git_arrows`'
