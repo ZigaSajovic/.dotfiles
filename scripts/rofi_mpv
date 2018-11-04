@@ -1,7 +1,10 @@
 #!/bin/bash
 
 command_=$(rofi -dmenu -p "mpv" -theme ~/.dotfiles/var/rofi_mpv/theme.rasi)
-if [ -n "$command_" ];then
+[[ -z "$command_" ]] && exit 1
+is_acestream=$(awk "/^acestream/" <(echo "$command_"))
+if [ -n "$is_acestream" ];then
+  acestream-launcher --player mpv "$command_"
+else
   mpv "$command_"
 fi
-
