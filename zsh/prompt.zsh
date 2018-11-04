@@ -77,10 +77,10 @@ precmd() {
 PROMPT_SYMBOL='❯'
 
 get_prompt_color(){
-  last_=$?
+  did_last_succeed=$?
   is_normal_mode=$(vi_mode_prompt_info)
   if [[ -z "$is_normal_mode" ]]; then
-    ([[ "$last_" -eq 0 ]] && echo 207) || echo 161 
+    ([[ "$did_last_succeed" -eq 0 ]] && echo 207) || echo 161 
   else
     echo 75
   fi
