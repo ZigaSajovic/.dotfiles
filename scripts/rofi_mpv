@@ -1,7 +1,17 @@
 #!/bin/bash
 
-to_play=$(rofi -dmenu -p "mpv" -theme ~/.dotfiles/var/rofi_mpv/theme.rasi)
+tmp_file="/tmp/mpv_rofi_list"
+find $HOME -type f | grep -E "\.webm$|\.flv$|\.vob$|\.ogg$|\.ogv$|\.drc$|\.gifv$|\.mng$|\.avi$|\.mov$|\.qt$|\.wmv$|\.yuv$|\.rm$|\.rmvb$|/.asf$|\.amv$|\.mp4$|\.m4v$|\.m.v$|\.svi$|\.3gp$|\.flv$|\.f4v$|\.mpg" > $tmp_file 
+
+to_play=$(sed "s@$HOME/@@" $tmp_file  | rofi -dmenu -matching fuzzy -i -p "mpv" -theme ~/.dotfiles/rofi/config.rasi)
 [[ -z "$to_play" ]] && exit 1
+
+to_play_full=$(grep "$to_play" $tmp_file)
+if [[ -n "$to_play_full" ]];then
+  mpv "$to_play_full"
+  exit 0
+fi
+
 is_acestream=$(awk "/^acestream/" <(echo "$to_play"))
 if [ -n "$is_acestream" ];then
   acestream-launcher --player mpv "$to_play"
