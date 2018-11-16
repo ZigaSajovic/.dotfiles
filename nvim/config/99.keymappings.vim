@@ -9,6 +9,10 @@ nmap <leader><C-s> :w<Space>
 
 "search
 xnoremap * "fy/<C-R>f<CR>
+nnoremap <leader>* :%s//
+xnoremap <leader>* "fy:%s/<C-R>f/
+nnoremap <leader>? :s//
+xnoremap <leader>? "fy:s/<C-R>f/
 nmap <silent> <leader>q :noh<cr>
 xmap <silent> <leader>q :noh<cr>
 
