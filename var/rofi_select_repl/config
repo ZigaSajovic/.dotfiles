@@ -5,4 +5,4 @@ iPython,ipython3
 R,R
 sml,sml
 octave,octave-cli
-matlab,matlab -nodisplay -nosplash
+matlab,matlab -nodesktop -nosplash

@@ -6,3 +6,4 @@ VISUAL=nvim; export VISUAL
 EDITOR=nvim; export EDITOR
 SUDO_EDITOR=nvim; export SUDO_EDITOR
 export PATH="$HOME/.dotfiles/scripts:$PATH"
+export PATH="/usr/local/matlab/bin:$PATH"
