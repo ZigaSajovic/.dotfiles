@@ -3,7 +3,11 @@
 id=$(xinput -list | grep "Virtual core keyboard"|sed 's/\s\+/ /g'|cut -d"=" -f2|cut -d" " -f1)
 setxkbmap -device $id -layout "$(setxkbmap -print | awk -F + '/xkb_symbols/ {print $2}')" -option ctrl:nocaps
 #but caps lock is escape when pressed alone
-xcape -e 'Control_L=Escape'
+to_test="xcape -e Control_L Escape"
+test=$(ps aux |grep "$to_test"|grep -v grep)
+if [[ -z "$test"  ]]; then
+  xcape -e 'Control_L=Escape'
+fi
 #id of the touchpad
 id=$(xinput list|grep Touchpad|grep -oE "id=[0-9]+"|cut -d'=' -f2)
 prop_id=$(xinput list-props $id|grep -i natural|head -n1|cut -d"(" -f2|cut -d")" -f1)
@@ -22,3 +26,6 @@ prop_id=$(xinput list-props $id|grep -i "accel speed"|head -n1|cut -d"(" -f2|cut
 xinput set-prop $id $prop_id 0.2
 #disable middle button
 xinput set-button-map $id 1 0 3
+
+#Set scaling of QT apps
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
