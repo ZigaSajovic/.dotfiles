@@ -1,0 +1,10 @@
+#!/bin/bash
+to_run="xcape -e Control_L Escape"
+test=$(ps aux |grep "$to_run"|grep -v grep)
+#caps-lock as control
+id=$(xinput -list | awk "/Virtual core keyboard/"|sed 's/\s\+/ /g'|cut -d"=" -f2|cut -d" " -f1)
+setxkbmap -device $id -layout "$(setxkbmap -print | awk -F + '/xkb_symbols/ {print $2}')" -option ctrl:nocaps
+
+if [[ -z "$test"  ]]; then
+  to_run
+fi
