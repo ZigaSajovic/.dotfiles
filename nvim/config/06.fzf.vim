@@ -47,14 +47,15 @@ function! s:ag_handler(lines)
 endfunction
 
 command! -nargs=* Agc call fzf#run({
-\ 'source':  printf('ag --nogroup --column --color -G %s "%s"',
-\                   expand('%'),
-\                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
+\ 'source':  printf('ag --nogroup --column --color -G %s "%s" %s',
+\                   expand('%:t'),
+\                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\'),
+\                   expand('%:p')),
 \ 'sink*':    function('<sid>ag_handler'),
 \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
 \            '--multi --bind=alt-a:select-all,alt-d:deselect-all '.
 \             '--prompt "Agc> "',
-\ 'down':    '~20%'
+\ 'down':    '~30%'
 \ })
 
 command! -nargs=* Ag call fzf#run({
@@ -64,7 +65,7 @@ command! -nargs=* Ag call fzf#run({
 \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
 \            '--multi --bind=alt-a:select-all,alt-d:deselect-all '.
 \             '--prompt "Ag> "',
-\ 'down':    '~20%'
+\ 'down':    '~30%'
 \ })
 
 
