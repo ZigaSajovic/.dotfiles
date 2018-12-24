@@ -21,5 +21,4 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'vimwiki/vimwiki'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'w0rp/ale'
-Plug 'MaskRay/ccls'
 call plug#end()
