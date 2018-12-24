@@ -9,7 +9,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'benmills/vimux'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'zchee/deoplete-jedi'
 Plug 'mhartington/oceanic-next'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -21,4 +20,6 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'vimwiki/vimwiki'
 Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'w0rp/ale'
+Plug 'MaskRay/ccls'
 call plug#end()
