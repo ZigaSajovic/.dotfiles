@@ -10,6 +10,8 @@ set si "Smart indent
 set wrap "Wrap lines
 set linebreak
 
+set matchpairs+=<:> "add <> to pair highlighting
+
 set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 
@@ -90,3 +92,6 @@ map [1;5B <Nop>
 set <C-LEFT>=[1;5D
 set <C-RIGHT>=[1;5
 
+
+set cmdheight=2
+let g:echodoc_enable_at_startup = 1
