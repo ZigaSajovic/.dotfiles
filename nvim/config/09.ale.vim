@@ -5,3 +5,6 @@ let g:ale_fixers = {
 \   'python': ['autopep8'],
 \   'cpp': ['clang-format'],
 \}
+
+nnoremap <Leader>af :ALEFix<CR>
+nnoremap <Leader>ad :ALEDetail<CR>
