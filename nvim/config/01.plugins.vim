@@ -21,4 +21,5 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'vimwiki/vimwiki'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'w0rp/ale'
+Plug 'Shougo/echodoc.vim'
 call plug#end()
