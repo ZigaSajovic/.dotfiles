@@ -6,7 +6,7 @@ find $HOME -type f | grep -E "\.webm$|\.flv$|\.vob$|\.ogg$|\.ogv$|\.drc$|\.gifv$
 to_play=$(sed "s@$HOME/@@" $tmp_file  | rofi -dmenu -matching fuzzy -i -p "mpv" -theme .dotfiles/var/rofi_mpv/theme.rasi)
 [[ -z "$to_play" ]] && exit 1
 
-to_play_full=$(grep "$to_play" $tmp_file)
+to_play_full="$HOME/$to_play"
 if [[ -n "$to_play_full" ]];then
   mpv "$to_play_full"
   exit 0
