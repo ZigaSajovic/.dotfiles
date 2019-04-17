@@ -1,13 +1,13 @@
 #!/bin/bash
 
 tmp_file="/tmp/mpv_rofi_list"
-find $HOME -type f | grep -E "\.webm$|\.flv$|\.vob$|\.ogg$|\.ogv$|\.drc$|\.gifv$|\.mng$|\.avi$|\.mov$|\.qt$|\.wmv$|\.yuv$|\.rm$|\.rmvb$|/.asf$|\.amv$|\.mp4$|\.m4v$|\.m.v$|\.svi$|\.3gp$|\.flv$|\.f4v$|\.mpg" > $tmp_file 
+find $HOME -type f | grep -E "\.webm$|\.flv$|\.vob$|\.ogg$|\.ogv$|\.drc$|\.gifv$|\.mng$|\.avi$|\.mov$|\.qt$|\.wmv$|\.yuv$|\.rm$|\.rmvb$|/.asf$|\.amv$|\.mp4$|\.m4v$|\.m.v$|\.svi$|\.3gp$|\.flv$|\.f4v$|\.mpg" > $tmp_file
 
 to_play=$(sed "s@$HOME/@@" $tmp_file  | rofi -dmenu -matching fuzzy -i -p "mpv" -theme .dotfiles/var/rofi_mpv/theme.rasi)
 [[ -z "$to_play" ]] && exit 1
 
 to_play_full="$HOME/$to_play"
-if [[ -n "$to_play_full" ]];then
+if [[ -f "$to_play_full" ]];then
   mpv "$to_play_full"
   exit 0
 fi
