@@ -7,3 +7,4 @@ EDITOR=nvim; export EDITOR
 SUDO_EDITOR=nvim; export SUDO_EDITOR
 export PATH="$HOME/.dotfiles/scripts:$PATH"
 export PATH="/usr/local/matlab/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
