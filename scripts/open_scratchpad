@@ -1,19 +1,19 @@
 #!/bin/bash
 # Args:
 # $1: role to be assigned to the terminal window
-# $P: command to run in the terminal window
+# $2: command to run in the terminal window
 # Example:
 #         ./open_scratchpad rofi_scratchpad rofi
 #
 
-V=$1
-P=$2
-if [ -z "$(wmctrl -l |grep -v $0 | grep $V)" ]; then # && # check if 
-  i3-msg "exec --no-startup-id gnome-terminal --title=\"$V\" --geometry=125x25 -x $P;"
-  sleep 0.1
-  i3-msg "[title=\"$V\"] floating enable;" 
-  i3-msg "[title=$V] move scratchpad;" 
-  i3-msg "[title=$V] border pixel 5;"
+WindowName=$1
+Command=$2
+if [ -z "$(wmctrl -l |grep -v $0 | grep $WindowName)" ]; then # && # check if 
+  i3-msg "exec --no-startup-id gnome-terminal --title=\"$WindowName\" --geometry=125x25 -x $Command;"
+  sleep 0.5
+  i3-msg "[title=$WindowName] floating enable;" 
+  i3-msg "[title=$WindowName] move scratchpad;" 
+  i3-msg "[title=$WindowName] border pixel 5;"
 fi
-i3-msg "[title=$V] scratchpad show; [title=$V] move position center;"
+i3-msg "[title=$WindowName] scratchpad show; [title=$WindowName] move position center;"
 
