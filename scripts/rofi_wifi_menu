@@ -2,24 +2,6 @@
 #This script provides a rofi menu interface for wifi control
 #It uses and requires nmcli
 
-toggle_entry="WiFi"
-create_option="Manual connection"
-
-fields="SSID,BARS,SECURITY"
-lines_full=$(nmcli --fields $fields dev wifi list|sed "/\(^--\|$(echo $fields|cut -d',' -f1)\)/d"|sed 's/\s\{2,\}/_:_/g')
-lines=$(echo -e "$lines_full"| awk -F "_:_" '{print $1"  "$2}')
-cons=$(nmcli con show)
-state=$(nmcli -fields WIFI g)
-current=$(iwgetid -r)
-ssid_field=$(echo -e "$fields"| awk  'BEGIN{FS=","}{for(i=1;i<=NF;++i) {if($i ~ "SSID") print i}}')
-
-#Checks if wifi is currently enabled
-if [[ "$state" =~ "enabled" ]]; then
-	toggle="$toggle_entry off"
-elif [[ "$state" =~ "disabled" ]]; then
-	toggle="$toggle_entry on"
-fi
-
 get_match()
 {
   selection=$(echo -e "$1" | rofi -dmenu -p "$2" -config ~/.dotfiles/rofi/config.rasi)
@@ -28,6 +10,33 @@ get_match()
   [[ -n "$1" ]] && [[ -z "$does_match_" ]] && exit 1
   echo "$selection"
 }
+
+toggle_entry="WiFi"
+create_option="Manual connection"
+
+
+#Checks if wifi is currently enabled
+state=$(nmcli -fields WIFI g)
+enable_test=$(echo "$state" | grep "enabled")
+echo $enable_test
+if [[ -z "$enable_test" ]]; then
+	toggle="$toggle_entry on"
+  selection=$(get_match "Yes\nNo" "Enable WiFi")
+  if [ $selection = "Yes" ];then
+    nmcli radio wifi on
+  fi
+  exit 1
+else
+	toggle="$toggle_entry off"
+fi
+
+fields="SSID,BARS,SECURITY"
+lines_full=$(nmcli --fields $fields dev wifi list|sed "/\(^--\|$(echo $fields|cut -d',' -f1)\)/d"|sed 's/\s\{2,\}/_:_/g')
+lines=$(echo -e "$lines_full"| awk -F "_:_" '{print $1"  "$2}')
+cons=$(nmcli con show)
+current=$(iwgetid -r)
+ssid_field=$(echo -e "$fields"| awk  'BEGIN{FS=","}{for(i=1;i<=NF;++i) {if($i ~ "SSID") print i}}')
+
 
 #Takes input from the user using a rofi menu
 selection=$(get_match "$toggle\n$lines\n$create_option" "WiFi")
