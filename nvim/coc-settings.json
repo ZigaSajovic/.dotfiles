@@ -1,0 +1,33 @@
+{
+  "languageserver": {
+    "ccls": {
+      "command": "/home/ziga/ccls/Release/ccls",
+      "filetypes": [
+        "c",
+        "cpp",
+        "h",
+        "hpp",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        },
+        "highlight": {
+          "lsRanges": true
+        }
+      }
+    }
+  },
+  "diagnostic.warningSign": "--",
+  "list.previewHighlightGroup": "Statement",
+  "list.searchHighlightGroup": "Statement"
+}
