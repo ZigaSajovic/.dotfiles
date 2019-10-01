@@ -29,5 +29,10 @@
   },
   "diagnostic.warningSign": "--",
   "list.previewHighlightGroup": "Statement",
-  "list.searchHighlightGroup": "Statement"
+  "list.searchHighlightGroup": "Statement",
+  "coc.preferences.hoverTarget": "preview",
+  "diagnostic.messageTarget": "echo",
+  "suggest.floatEnable": false,
+  "signature.target": "float",
+  "signature.enable": true
 }
