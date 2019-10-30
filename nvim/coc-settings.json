@@ -1,7 +1,7 @@
 {
   "languageserver": {
     "ccls": {
-      "command": "/home/ziga/ccls/Release/ccls",
+      "command": "ccls",
       "filetypes": [
         "c",
         "cpp",
