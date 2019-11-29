@@ -25,6 +25,18 @@
           "lsRanges": true
         }
       }
+    },
+    "cmake": {
+      "command": "cmake-language-server",
+      "filetypes": [
+        "cmake"
+      ],
+      "rootPatterns": [
+        "build/"
+      ],
+      "initializationOptions": {
+        "buildDirectory": "build"
+      }
     }
   },
   "diagnostic.warningSign": "--",
@@ -34,5 +46,13 @@
   "diagnostic.messageTarget": "echo",
   "suggest.floatEnable": false,
   "signature.target": "float",
-  "signature.enable": true
+  "signature.enable": true,
+
+  "latex.build.executable": "pdflatex",
+  	"latex.build.args": [
+		"--shell-escape",
+		"-pdf",
+		"-interaction=nonstopmode",
+		"-output-dir=build"
+	]
 }
