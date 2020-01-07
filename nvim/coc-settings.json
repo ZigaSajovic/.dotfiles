@@ -45,7 +45,7 @@
   "coc.preferences.hoverTarget": "preview",
   "diagnostic.messageTarget": "echo",
   "suggest.floatEnable": false,
-  "signature.target": "float",
+  "signature.target": "echo",
   "signature.enable": true,
 
   "latex.build.executable": "pdflatex",
