@@ -87,7 +87,7 @@ function! s:ag_handlerC(lines)
 endfunction
 
 command! -nargs=* Agc call fzf#run({
-\ 'source':  printf('ag --nogroup --column --color -G "%s" "%s" "%s"',
+\ 'source':  printf('ag --nogroup --depth 0 --column --color -G "%s" "%s" "%s"',
 \                   expand('%:t'),
 \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\'),
 \                   expand('%:p')),
