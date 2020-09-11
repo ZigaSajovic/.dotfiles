@@ -1,0 +1,8 @@
+#/bin/bash
+if [ -z "$1" ]
+  then
+    echo "Please provide path";
+  else
+    ag --nonumbers "std::.*?[\(<\{]" $1|sed 's/std/\nstd/g' | sed 's/[<>(){},& ]/\n/g' | grep "std::" > /tmp/std_uses.txt
+    ag --nonumbers "xml::Sort\(" $1|sed 's/xml::Sort/\nstd::sort/g' | sed 's/[<>(){},& ]/\n/g' | grep "std::" >> /tmp/std_uses.txt
+  fi
