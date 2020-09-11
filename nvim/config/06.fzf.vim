@@ -98,6 +98,18 @@ command! -nargs=* Agc call fzf#run({
 \ 'down':    '~30%'
 \ })
 
+command! -nargs=* Agc1 call fzf#run({
+\ 'source':  printf('ag --nogroup --depth 1 --column --color -G "%s" "%s" "%s"',
+\                   expand('%:t'),
+\                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\'),
+\                   expand('%:p')),
+\ 'sink*':    function('<sid>ag_handlerC'),
+\ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
+\            '--multi --bind=alt-a:select-all,alt-d:deselect-all '.
+\             '--prompt "Agc> "',
+\ 'down':    '~30%'
+\ })
+
 "work with buffers
 nnoremap <M-b> :Buffers<CR> 
 nnoremap <M-B> :w<CR>:Buffers<CR>

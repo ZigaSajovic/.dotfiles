@@ -19,4 +19,10 @@ Plug 'ZigaSajovic/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'leafgarland/typescript-vim'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'junegunn/gv.vim'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'joshdick/onedark.vim'
+Plug 'rakr/vim-one'
+"Plug 'kkoomen/vim-doge'
 call plug#end()

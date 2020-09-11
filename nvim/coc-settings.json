@@ -21,6 +21,9 @@
         "cache": {
           "directory": "/tmp/ccls"
         },
+        "client": {
+          "diagnosticsRelatedInformation": false
+        },
         "highlight": {
           "lsRanges": true
         }
@@ -39,20 +42,21 @@
       }
     }
   },
+  "python.jediEnabled": false,
   "diagnostic.warningSign": "--",
   "list.previewHighlightGroup": "Statement",
   "list.searchHighlightGroup": "Statement",
   "coc.preferences.hoverTarget": "preview",
   "diagnostic.messageTarget": "echo",
-  "suggest.floatEnable": false,
-  "signature.target": "echo",
+  "suggest.floatEnable": true,
+  "signature.target": "float",
+  "signature.preferShownAbove": false,
   "signature.enable": true,
-
   "latex.build.executable": "pdflatex",
-  	"latex.build.args": [
-		"--shell-escape",
-		"-pdf",
-		"-interaction=nonstopmode",
-		"-output-dir=build"
-	]
+  "latex.build.args": [
+    "--shell-escape",
+    "-pdf",
+    "-interaction=nonstopmode",
+    "-output-dir=build"
+  ]
 }
