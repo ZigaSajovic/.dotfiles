@@ -1,4 +1,5 @@
 #!/bin/bash
+export TERMINAL="alacritty"
 #caps-lock as control
 id=$(xinput -list | grep "Virtual core keyboard"|sed 's/\s\+/ /g'|cut -d"=" -f2|cut -d" " -f1)
 setxkbmap -device $id -layout "$(setxkbmap -print | awk -F + '/xkb_symbols/ {print $2}')" -option ctrl:nocaps
@@ -9,7 +10,9 @@ if [[ -z "$test"  ]]; then
   xcape -e 'Control_L=Escape'
 fi
 #id of the touchpad
-id=$(xinput list|grep Touchpad|grep -oE "id=[0-9]+"|cut -d'=' -f2)
+id=$(xinput list|grep -i touchpad|grep -oE "id=[0-9]+"|cut -d'=' -f2)
+
+#enable natural scaling
 prop_id=$(xinput list-props $id|grep -i natural|head -n1|cut -d"(" -f2|cut -d")" -f1)
 xinput set-prop $id $prop_id 1
 #enable horizontal scroll
@@ -18,14 +21,17 @@ xinput set-prop $id $prop_id 1
 #enable tap to click
 prop_id=$(xinput list-props $id|grep -i tapping|head -n1|cut -d"(" -f2|cut -d")" -f1)
 xinput set-prop $id $prop_id 1
+#enable tap to drag
+prop_id=$(xinput list-props $id|grep -i "tapping drag"|head -n1|cut -d"(" -f2|cut -d")" -f1)
+xinput set-prop $id $prop_id 1
 #disable touchpad while typing
 prop_id=$(xinput list-props $id|grep -i "disable while typing"|head -n1|cut -d"(" -f2|cut -d")" -f1)
 xinput set-prop $id $prop_id 1
 #set mouse acceleration
 prop_id=$(xinput list-props $id|grep -i "accel speed"|head -n1|cut -d"(" -f2|cut -d")" -f1)
-xinput set-prop $id $prop_id 0.2
+xinput set-prop $id $prop_id 0.5
 #disable middle button
-xinput set-button-map $id 1 0 3
+xinput set-button-map $id 1 1 3
 
 #Set scaling of QT apps
 export QT_AUTO_SCREEN_SCALE_FACTOR=1

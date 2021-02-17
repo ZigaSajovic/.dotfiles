@@ -8,7 +8,8 @@
         "h",
         "hpp",
         "objc",
-        "objcpp"
+        "objcpp",
+        "arduino"
       ],
       "rootPatterns": [
         ".ccls",
@@ -22,30 +23,42 @@
           "directory": "/tmp/ccls"
         },
         "client": {
-          "diagnosticsRelatedInformation": false
+          "snippetSupport": true
         },
         "highlight": {
           "lsRanges": true
+        },
+        "index": {
+          "initialWhitelist": [".*"]
         }
-      }
-    },
-    "cmake": {
-      "command": "cmake-language-server",
-      "filetypes": [
-        "cmake"
-      ],
-      "rootPatterns": [
-        "build/"
-      ],
-      "initializationOptions": {
-        "buildDirectory": "build"
       }
     }
   },
+  "suggest.fixInsertedWord": true,
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
+  "clangd.enabled": false,
+  "clangd.serverCompletionRanking": true,
+  "clangd.semanticHighlighting": true,
+  "clangd.arguments": [
+    "--header-insertion=iwyu",
+    "--suggest-missing-includes",
+    "--completion-style=detailed",
+    "--background-index=true",
+    "-j=12"
+  ],
   "python.jediEnabled": false,
+  "python.formatting.provider": "autopep8",
+  "python.formatting.autopep8Path": "/home/ziga/.local/bin/autopep8",
+  "python.formatting.autopep8Args": [
+    "--indent-size=2",
+    "--ignore=E111,E226,E24,W50,W690"
+  ],
+  "python.linting.pep8Args": [
+    "--indent-size=2",
+    "--ignore=E111,E226,E24,W50,W690"
+  ],
   "diagnostic.warningSign": "--",
   "list.previewHighlightGroup": "Statement",
-  "list.searchHighlightGroup": "Statement",
   "coc.preferences.hoverTarget": "preview",
   "diagnostic.messageTarget": "echo",
   "suggest.floatEnable": true,

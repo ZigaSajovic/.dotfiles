@@ -7,5 +7,5 @@ let g:ale_fixers = {
 \}
 
 let g:ale_enabled=0
-nnoremap <Leader>af :ALEFix<CR>
+"nnoremap <Leader>af :ALEFix<CR>
 "nnoremap <Leader>ad :ALEDetail<CR>

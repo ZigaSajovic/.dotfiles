@@ -122,3 +122,6 @@ nmap <M-a> :Ag<Space>
 "work with search
 nmap <M-l> :BLines<CR>
 nmap <Leader><M-s> :Lines<CR>
+nmap <M-c> :Commands<CR>
+nmap <M-h> :History:<CR>
+nmap <M-s> :History/<CR>

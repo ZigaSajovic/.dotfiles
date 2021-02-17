@@ -1,11 +1,11 @@
+configuration {
+}
+
 * {
     background-color:      #2f343f;
     border-color:          White;
     text-color:           #f3f4f5;
     font:            "System San Francisco Display 12";
-}
-
-configuration {
 }
 
 #window {

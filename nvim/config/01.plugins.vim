@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-eunuch'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
@@ -15,7 +16,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 Plug 'maverickg/stan.vim'
-Plug 'ZigaSajovic/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'leafgarland/typescript-vim'
@@ -24,5 +25,5 @@ Plug 'junegunn/gv.vim'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'joshdick/onedark.vim'
 Plug 'rakr/vim-one'
-"Plug 'kkoomen/vim-doge'
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 call plug#end()
