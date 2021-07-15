@@ -154,6 +154,7 @@ command! -nargs=* Agc1 call fzf#run({
 \ })
 
 "work with buffers
+nnoremap <M-w> :Windows<CR> 
 nnoremap <M-b> :Buffers<CR> 
 nnoremap <M-B> :w<CR>:Buffers<CR>
 "work with files
