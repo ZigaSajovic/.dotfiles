@@ -10,7 +10,7 @@ if [[ -z "$test"  ]]; then
   xcape -e 'Control_L=Escape'
 fi
 #id of the touchpad
-id=$(xinput list|grep -i touchpad|grep -oE "id=[0-9]+"|cut -d'=' -f2)
+id=$(xinput list|grep -i Synaptics|grep -oE "id=[0-9]+"|cut -d'=' -f2)
 
 #enable natural scaling
 prop_id=$(xinput list-props $id|grep -i natural|head -n1|cut -d"(" -f2|cut -d")" -f1)
